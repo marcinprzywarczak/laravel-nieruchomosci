@@ -1,4 +1,12 @@
 <x-guest-layout>
+    <x-slot name="scripts">
+        <script>
+            console.log("Test biblioteki jQuery");
+            var tmp = $('form');
+            console.log(tmp);
+        </script>
+        
+    </x-slot>
     <x-auth-card>
         
 

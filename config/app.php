@@ -178,6 +178,10 @@ return [
         * Premissions and roles
         */
         Spatie\Permission\PermissionServiceProvider::class,
+        /*
+            Logi
+        */
+        Arcanedev\LogViewer\LogViewerServiceProvider::class,
     ],
 
     /*

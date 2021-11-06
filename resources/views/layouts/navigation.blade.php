@@ -35,8 +35,8 @@
         <div class="navbar-nav dropdown">
             <a href="#" class="nav-link dropdown-toggle" id="profile" 
                     data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="{{url('/images/avatars/blank.png')}}" alt="USER_NAME" width="32" height="32" class="rounded-circle">
-                User Name                                    
+                <img src="{{url('/images/avatars/blank.png')}}" alt="USER_AVATAR" width="32" height="32" class="rounded-circle">
+                {{ Auth::user()->name }}                    
             </a>
             <ul class="dropdown-menu dropdown-menu-end text-small" aria-labelledby="profile">
                 <li><a class="dropdown-item disabled" href="#" aria-disabled="true">Settings</a></li>

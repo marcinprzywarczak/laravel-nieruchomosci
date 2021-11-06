@@ -16,7 +16,7 @@ class CreatePropertiesTable extends Migration
         Schema::create('properties', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('property_type_id');
-            $table->foreig('property_type_id')
+            $table->foreign('property_type_id')
                 ->references('id')
                 ->on('property_types')
                 ->onDelete('no action');

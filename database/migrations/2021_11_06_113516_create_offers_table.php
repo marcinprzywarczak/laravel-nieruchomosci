@@ -16,12 +16,12 @@ class CreateOffersTable extends Migration
         Schema::create('offers', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('property_id');
-            $table->foreig('property_id')
+            $table->foreign('property_id')
                 ->references('id')
                 ->on('properties')
                 ->onDelete('no action');
             $table->unsignedBigInteger('offer_status_id');
-            $table->foreig('offer_status_id')
+            $table->foreign('offer_status_id')
                 ->references('id')
                 ->on('offer_statuses')
                 ->onDelete('no action');

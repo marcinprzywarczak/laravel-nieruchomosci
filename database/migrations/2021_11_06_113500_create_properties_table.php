@@ -20,7 +20,7 @@ class CreatePropertiesTable extends Migration
                 ->references('id')
                 ->on('property_types')
                 ->onDelete('no action');
-            $table->string('adress');
+            $table->string('address');
             $table->unsignedBigInteger("area_square_meters");
             $table->unsignedBigInteger("rooms")->nullable();
             $table->unsignedBigInteger("floor")->nullable();

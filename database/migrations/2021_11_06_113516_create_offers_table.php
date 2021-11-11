@@ -28,7 +28,7 @@ class CreateOffersTable extends Migration
             $table->string('title',100);
             $table->date('start_date');
             $table->date('end_date');
-            $table->double('price', 10, 2);
+            $table->double('price', 12, 2);
             $table->string('comment', 255)->nullable();
             $table->timestamps();
         });

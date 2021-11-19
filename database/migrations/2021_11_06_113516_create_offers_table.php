@@ -31,6 +31,7 @@ class CreateOffersTable extends Migration
             $table->double('price', 12, 2);
             $table->string('comment', 255)->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

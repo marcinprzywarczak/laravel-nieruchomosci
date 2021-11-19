@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PropertyTypeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,4 +22,13 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
+
 require __DIR__.'/auth.php';
+
+Route::middleware(['auth', 'verified'])->group(function(){
+    Route::name('property_types.')->prefix('property_types')->group(function(){
+        Route::get('', [PropertyTypeController::class, 'index'])
+            ->name('index')
+            ->middleware(['permission:property_types.index']);
+    });
+});

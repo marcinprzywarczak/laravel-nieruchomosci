@@ -15,6 +15,8 @@ class PermissionsSeeder extends Seeder
         Permission::create(['name' => 'users.store']);
         Permission::create(['name' => 'users.destroy']);
         Permission::create(['name' => 'users.change_role']);
+        Permission::create(['name' => 'property_types.index']);
+        Permission::create(['name' => 'property_types.store']);
 
         $userRole = Role::findByName(config('app.admin_role'));
         $userRole->givePermissionTo('log-viewer');
@@ -22,5 +24,10 @@ class PermissionsSeeder extends Seeder
         $userRole->givePermissionTo('users.store');
         $userRole->givePermissionTo('users.destroy');
         $userRole->givePermissionTo('users.change_role');
+        $userRole->givePermissionTo('property_types.index');
+        $userRole->givePermissionTo('property_types.store');
+
+        $userRole = Role::findByName(config('app.user_role'));
+        $userRole->givePermissionTo('property_types.index');
     }
 }

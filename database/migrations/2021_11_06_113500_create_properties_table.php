@@ -27,6 +27,7 @@ class CreatePropertiesTable extends Migration
             $table->unsignedBigInteger("number_of_floor")->nullable();
             $table->string('description', 255)->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

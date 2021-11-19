@@ -17,6 +17,11 @@
                 </x-nav-link>
             </li>
             <li class="nav-item">
+                <x-nav-link :href="route('offer_statuses.index')" :active="request()->routeIs('offer_statuses.index')">
+                    {{ __('translations.offer_statuses.title') }}
+                </x-nav-link>
+            </li>
+            <li class="nav-item">
                 <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                     Dashboard
                 </x-nav-link>

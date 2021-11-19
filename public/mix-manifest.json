@@ -6,5 +6,5 @@
     "/css/property_types.css": "/css/property_types.css",
     "/css/form.css": "/css/form.css",
     "/js/vendor.js": "/js/vendor.js",
-    "/vendor/datatables/pl.json": "/vendor/datatables/pl.json"
+    "/vendor/datatables/i18n/pl.json": "/vendor/datatables/i18n/pl.json"
 }

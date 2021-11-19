@@ -1,8 +1,10 @@
 {
     "/js/app.js": "/js/app.js",
     "/js/property_types.js": "/js/property_types.js",
+    "/js/offer_statuses.js": "/js/offer_statuses.js",
     "/js/manifest.js": "/js/manifest.js",
     "/css/app.css": "/css/app.css",
+    "/css/offer_statuses.css": "/css/offer_statuses.css",
     "/css/property_types.css": "/css/property_types.css",
     "/css/form.css": "/css/form.css",
     "/js/vendor.js": "/js/vendor.js",

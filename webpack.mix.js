@@ -17,4 +17,6 @@ mix.js('resources/js/app.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css')
     .sass('resources/sass/form.scss', 'public/css')
     .sass('resources/sass/property_types.scss', 'public/css')
-    .sourceMaps();
+    .copy('resources/views/vendor/datatables/i18n/pl.json', 'public/vendor/datatables')
+    .sourceMaps()
+    .extract();

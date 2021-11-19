@@ -21,4 +21,14 @@ return[
             'count_properties' => 'ilość nieruchomości'
         ]
     ],
+    "offer_statuses" =>
+    [
+        'title' => 'Statusy ofert',
+        'attribute'=>
+        [
+            'name' => 'nazwa',
+            'count_offers' => 'ilość ofert',
+        ]
+
+    ]
 ];

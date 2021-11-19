@@ -12,6 +12,11 @@
         <div class="collapse navbar-collapse" id="navbar">
         <ul class="navbar-nav me-auto mb-2 mb-md-0">
             <li class="nav-item">
+                <x-nav-link :href="route('property_types.index')" :active="request()->routeIs('property_types.index')">
+                    {{ __('translations.property_types.title') }}
+                </x-nav-link>
+            </li>
+            <li class="nav-item">
                 <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                     Dashboard
                 </x-nav-link>

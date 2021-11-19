@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use App\Models\Offer;
-use App\Models\Property_type;
+use App\Models\PropertyType;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -27,8 +27,8 @@ class Property extends Model
         return $this->hasMany(Offer::class);
     }
 
-    public function property_type()
+    public function propertyType()
     {
-        return $this->belongsTo(Property_type::class);
+        return $this->belongsTo(PropertyType::class);
     }
 }

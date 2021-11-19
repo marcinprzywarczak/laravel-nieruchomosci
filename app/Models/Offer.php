@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use App\Models\Property;
-use App\Models\Offer_status;
+use App\Models\OfferStatus;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -27,8 +27,8 @@ class Offer extends Model
         return $this->belongsTo(Property::class);
     }
 
-    public function offer_status()
+    public function offerStatus()
     {
-        return $this->belongsTo(Offer_status::class);
+        return $this->belongsTo(OfferStatus::class);
     }
 }

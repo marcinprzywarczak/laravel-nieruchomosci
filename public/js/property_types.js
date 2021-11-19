@@ -6,8 +6,7 @@
  * or disable the default devtool with "devtool: false".
  * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
  */
-/******/ (() => { // webpackBootstrap
-/******/ 	var __webpack_modules__ = ({
+(self["webpackChunk"] = self["webpackChunk"] || []).push([["/js/property_types"],{
 
 /***/ "./resources/js/property_types.js":
 /*!****************************************!*\
@@ -19,14 +18,9 @@ eval("//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset
 
 /***/ })
 
-/******/ 	});
-/************************************************************************/
-/******/ 	
-/******/ 	// startup
-/******/ 	// Load entry module and return exports
-/******/ 	// This entry module can't be inlined because the eval-source-map devtool is used.
-/******/ 	var __webpack_exports__ = {};
-/******/ 	__webpack_modules__["./resources/js/property_types.js"]();
-/******/ 	
-/******/ })()
-;
+},
+/******/ __webpack_require__ => { // webpackRuntimeModules
+/******/ var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
+/******/ var __webpack_exports__ = (__webpack_exec__("./resources/js/property_types.js"));
+/******/ }
+]);

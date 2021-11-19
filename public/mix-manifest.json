@@ -1,7 +1,10 @@
 {
     "/js/app.js": "/js/app.js",
     "/js/property_types.js": "/js/property_types.js",
+    "/js/manifest.js": "/js/manifest.js",
     "/css/app.css": "/css/app.css",
     "/css/property_types.css": "/css/property_types.css",
-    "/css/form.css": "/css/form.css"
+    "/css/form.css": "/css/form.css",
+    "/js/vendor.js": "/js/vendor.js",
+    "/vendor/datatables/pl.json": "/vendor/datatables/pl.json"
 }

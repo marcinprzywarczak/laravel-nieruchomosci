@@ -8,6 +8,11 @@
         <meta name="description" content="">
         <meta name="author" content="">
         <title>Bootstrap v5.0</title>
+        <script>
+            window.config = {
+                locale: "{{ config('app.locale') }}"
+            }
+        </script>
         <link rel="stylesheet" href="{{asset('css/app.css')}}">
 
         {{$styles}}

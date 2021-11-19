@@ -1,5 +1,7 @@
 {
     "/js/app.js": "/js/app.js",
+    "/js/property_types.js": "/js/property_types.js",
     "/css/app.css": "/css/app.css",
+    "/css/property_types.css": "/css/property_types.css",
     "/css/form.css": "/css/form.css"
 }

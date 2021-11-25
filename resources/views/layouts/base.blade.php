@@ -7,7 +7,7 @@
         <meta name="viewport" content="width=device-width", initial-scale="1">
         <meta name="description" content="">
         <meta name="author" content="">
-        <meta name="crsf-token" content="{{ crsf_token() }}">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
         <title>Bootstrap v5.0</title>
         <script>
             window.config = {

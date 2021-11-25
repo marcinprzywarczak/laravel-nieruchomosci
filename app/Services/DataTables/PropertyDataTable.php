@@ -2,14 +2,16 @@
 
 namespace App\Services\DataTables;
 
+use Carbon\Carbon;
 use App\Models\Property;
+use Yajra\DataTables\Facades\DataTables;
 use Yajra\DataTables\Services\DataTable;
 
-class PropertyDataTable extend DataTable
+class PropertyDataTable extends DataTable
 {
     public function ajax()
     {
-        $datatable = DataTables::eloquen($this->query())
+        $datatable = DataTables::eloquent($this->query())
             ->editColumn('created_at', function($row)
             {
                 return $row->created_at

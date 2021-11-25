@@ -31,4 +31,13 @@ return[
         ]
 
     ]
+    "properties" =>
+    [
+        'title' => 'Nieruchomości',
+        'attribute'=>
+        [
+            'name' => 'nazwa',
+            'description' => 'opis'
+        ]
+    ]
 ];

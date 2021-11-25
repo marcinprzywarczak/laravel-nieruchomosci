@@ -11,21 +11,32 @@
         </button>
         <div class="collapse navbar-collapse" id="navbar">
         <ul class="navbar-nav me-auto mb-2 mb-md-0">
+            @can('property_types.index')
             <li class="nav-item">
                 <x-nav-link :href="route('property_types.index')" :active="request()->routeIs('property_types.index')">
                     {{ __('translations.property_types.title') }}
                 </x-nav-link>
             </li>
+            @endcan
+            @can('offer_statuses.index')
             <li class="nav-item">
                 <x-nav-link :href="route('offer_statuses.index')" :active="request()->routeIs('offer_statuses.index')">
                     {{ __('translations.offer_statuses.title') }}
                 </x-nav-link>
             </li>
+            @endcan
+            @can('properties.index')
+            <li class="nav-item">
+                <x-nav-link :href="route('properties.index')" :active="request()->routeIs('properties.index')">
+                    {{ __('translations.properties.title') }}
+                </x-nav-link>
+            </li>
+            @endcan
             <li class="nav-item">
                 <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                     Dashboard
                 </x-nav-link>
-            </li>            
+            </li>           
             <li class="nav-item">
                 <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
                     Home

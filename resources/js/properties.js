@@ -9,13 +9,17 @@ $(function ()
                 type: 'POST',
                 headers:
                 {
-                    'X-CRSF-TOKEN': $('meta[name="crsf-token"]').attr('content')
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             },
             columns:
             [
                 {data: 'id', name: 'id'},
-                {data: 'name', name: 'name'},
+                {data: 'address', name: 'address'},
+                {data: 'area_square_meters', name: 'area_square_meters'},
+                {data: 'rooms', name: 'rooms'},
+                {data: 'floor', name: 'floor'},
+                {data: 'number_of_floor', name: 'number_of_floor'},
                 {data: 'description', name: 'description'},
                 {data: 'created_at', name: 'created_at'},
                 {data: 'updated_at', name: 'updated_at'},
@@ -24,7 +28,7 @@ $(function ()
             ],
             language: 
             {
-                "url": "vendor/datatables/i18n/" + Config.locale + ".json"
+                "url": "vendor/datatables/i18n/" + config.locale + ".json"
             },
             processing: true,
             serverSide: true,

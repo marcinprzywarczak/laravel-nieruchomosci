@@ -30,13 +30,17 @@ return[
             'count_offers' => 'ilość ofert',
         ]
 
-    ]
+        ],
     "properties" =>
     [
         'title' => 'Nieruchomości',
         'attribute'=>
         [
-            'name' => 'nazwa',
+            'address' => 'adres',
+            'area_square_meters' => 'powierzchnia',
+            'rooms' => 'pokoje',
+            'floor' => 'piętro',
+            'number_of_floor' => 'liczba pięter',
             'description' => 'opis'
         ]
     ]

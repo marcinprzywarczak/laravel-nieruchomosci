@@ -19,6 +19,9 @@ class PermissionsSeeder extends Seeder
         Permission::create(['name' => 'property_types.store']);
         Permission::create(['name' => 'offer_statuses.index']);
         Permission::create(['name' => 'offer_statuses.store']);
+        Permission::create(['name' => 'properties.index']);
+        Permission::create(['name' => 'properties.store']);
+
 
         $userRole = Role::findByName(config('app.admin_role'));
         $userRole->givePermissionTo('log-viewer');
@@ -30,10 +33,12 @@ class PermissionsSeeder extends Seeder
         $userRole->givePermissionTo('property_types.store');
         $userRole->givePermissionTo('offer_statuses.index');
         $userRole->givePermissionTo('offer_statuses.store');
-
+        $userRole->givePermissionTo('properties.index');
+        $userRole->givePermissionTo('properties.store');
 
         $userRole = Role::findByName(config('app.user_role'));
         $userRole->givePermissionTo('property_types.index');
         $userRole->givePermissionTo('offer_statuses.index');
+        $userRole->givePermissionTo('properties.index');
     }
 }

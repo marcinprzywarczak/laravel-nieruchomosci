@@ -16,7 +16,11 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>{{ __('translations.properties.attribute.name') }}</th>
+                        <th>{{ __('translations.properties.attribute.address') }}</th>
+                        <th>{{ __('translations.properties.attribute.area_square_meters') }}</th>
+                        <th>{{ __('translations.properties.attribute.rooms') }}</th>
+                        <th>{{ __('translations.properties.attribute.floor') }}</th>
+                        <th>{{ __('translations.properties.attribute.number_of_floor') }}</th>
                         <th>{{ __('translations.properties.attribute.description') }}</th>
                         <th>{{ __('translations.attribute.created_at') }}</th>
                         <th>{{ __('translations.attribute.updated_at') }}</th>
@@ -24,19 +28,7 @@
                         <th class="always-visible"></th>
                     </tr>
                 </thead>
-                <tbody>
-                    @foreach ($offer_statuses as $offer_status )
-                        <tr>
-                            <td>{{ $offer_status->id }}</td>
-                            <td>{{ $offer_status->name }}</td>
-                            <td>{{ $offer_status->created_at }}</td>
-                            <td>{{ $offer_status->updated_at }}</td>
-                            <td>{{ $offer_status->deleted_at }}</td>
-                            <td>{{ $offer_status->offers_count }}</td>
-                            <td></td>
-                        </tr>
-                    @endforeach
-                </tbody>
+                
             </table>
         </div>
     </div>

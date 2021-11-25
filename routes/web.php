@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\OfferStatusController;
 use App\Http\Controllers\PropertyTypeController;
 
@@ -37,5 +38,15 @@ Route::middleware(['auth', 'verified'])->group(function(){
         Route::get('', [OfferStatusController::class, 'index'])
             ->name('index')
             ->middleware(['permission:offer_statuses.index']);
+    });
+
+    Route::name('properties.')->prefix('properties')->group(function()
+    {
+        Route::get('', [PropertyController::class, 'index'])
+            ->name('index')
+            ->middleware(['permission:properties.index']);
+        Route::post('/datatable', [PropertyController::class, 'dataTable'])
+            ->name('datatable')
+            ->middleware(['permission:properties.index']);
     });
 });

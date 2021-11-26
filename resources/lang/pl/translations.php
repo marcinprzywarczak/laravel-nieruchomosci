@@ -41,7 +41,8 @@ return[
             'rooms' => 'pokoje',
             'floor' => 'piętro',
             'number_of_floor' => 'liczba pięter',
-            'description' => 'opis'
+            'description' => 'opis',
+            'property_type' => 'typ nieruchomości',
         ]
     ]
 ];

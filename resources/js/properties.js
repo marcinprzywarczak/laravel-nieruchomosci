@@ -16,6 +16,7 @@ $(function ()
             [
                 {data: 'id', name: 'id'},
                 {data: 'address', name: 'address'},
+                {data: 'property_type.name', name: 'property_type.name'},
                 {data: 'area_square_meters', name: 'area_square_meters'},
                 {data: 'rooms', name: 'rooms'},
                 {data: 'floor', name: 'floor'},

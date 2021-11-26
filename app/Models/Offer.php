@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Property;
 use App\Models\OfferStatus;
+use App\Models\PropertyType;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -31,5 +32,13 @@ class Offer extends Model
     public function offer_status()
     {
         return $this->belongsTo(OfferStatus::class);
+    }
+
+    public function property_type()
+    {
+        return $this->hasManyThrough(PropertyType::class, Property::class,
+                                    'id', 'id',
+                                    'property_id',
+                                    'property_type_id');
     }
 }

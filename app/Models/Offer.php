@@ -28,7 +28,7 @@ class Offer extends Model
         return $this->belongsTo(Property::class);
     }
 
-    public function offerStatus()
+    public function offer_status()
     {
         return $this->belongsTo(OfferStatus::class);
     }

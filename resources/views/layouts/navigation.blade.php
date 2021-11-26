@@ -32,6 +32,13 @@
                 </x-nav-link>
             </li>
             @endcan
+            @can('offers.index')
+            <li class="nav-item">
+                <x-nav-link :href="route('offers.index')" :active="request()->routeIs('offers.index')">
+                    {{ __('translations.offers.title') }}
+                </x-nav-link>
+            </li>
+            @endcan
             <li class="nav-item">
                 <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                     Dashboard

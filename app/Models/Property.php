@@ -28,7 +28,7 @@ class Property extends Model
         return $this->hasMany(Offer::class);
     }
 
-    public function propertyType()
+    public function property_type()
     {
         return $this->belongsTo(PropertyType::class);
     }

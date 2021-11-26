@@ -111,6 +111,7 @@
 /******/ 			"css/properties": 0,
 /******/ 			"css/offer_statuses": 0,
 /******/ 			"css/property_types": 0,
+/******/ 			"css/offers": 0,
 /******/ 			"css/form": 0
 /******/ 		};
 /******/ 		

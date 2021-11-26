@@ -18,6 +18,17 @@ eval("//require('./bootstrap');\n//require('alpinejs');\nwindow.$ = window.jQuer
 
 /***/ }),
 
+/***/ "./resources/sass/offers.scss":
+/*!************************************!*\
+  !*** ./resources/sass/offers.scss ***!
+  \************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9yZXNvdXJjZXMvc2Fzcy9vZmZlcnMuc2Nzcy5qcyIsIm1hcHBpbmdzIjoiO0FBQUEiLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9yZXNvdXJjZXMvc2Fzcy9vZmZlcnMuc2Nzcz80ZWNiIl0sInNvdXJjZXNDb250ZW50IjpbIi8vIGV4dHJhY3RlZCBieSBtaW5pLWNzcy1leHRyYWN0LXBsdWdpblxuZXhwb3J0IHt9OyJdLCJuYW1lcyI6W10sInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///./resources/sass/offers.scss\n");
+
+/***/ }),
+
 /***/ "./resources/sass/app.scss":
 /*!*********************************!*\
   !*** ./resources/sass/app.scss ***!
@@ -76,7 +87,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extr
 },
 /******/ __webpack_require__ => { // webpackRuntimeModules
 /******/ var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-/******/ __webpack_require__.O(0, ["css/app","css/properties","css/offer_statuses","css/property_types","css/form","/js/vendor"], () => (__webpack_exec__("./resources/js/app.js"), __webpack_exec__("./resources/sass/app.scss"), __webpack_exec__("./resources/sass/form.scss"), __webpack_exec__("./resources/sass/property_types.scss"), __webpack_exec__("./resources/sass/offer_statuses.scss"), __webpack_exec__("./resources/sass/properties.scss")));
+/******/ __webpack_require__.O(0, ["css/app","css/properties","css/offer_statuses","css/property_types","css/offers","css/form","/js/vendor"], () => (__webpack_exec__("./resources/js/app.js"), __webpack_exec__("./resources/sass/app.scss"), __webpack_exec__("./resources/sass/form.scss"), __webpack_exec__("./resources/sass/property_types.scss"), __webpack_exec__("./resources/sass/offer_statuses.scss"), __webpack_exec__("./resources/sass/properties.scss"), __webpack_exec__("./resources/sass/offers.scss")));
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);

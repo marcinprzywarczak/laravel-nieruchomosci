@@ -17,6 +17,7 @@
                     <tr>
                         <th>#</th>
                         <th>{{ __('translations.properties.attribute.address') }}</th>
+                        <th>{{ __('translations.properties.attribute.property_type') }}</th>
                         <th>{{ __('translations.properties.attribute.area_square_meters') }}</th>
                         <th>{{ __('translations.properties.attribute.rooms') }}</th>
                         <th>{{ __('translations.properties.attribute.floor') }}</th>

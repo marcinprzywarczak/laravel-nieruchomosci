@@ -9,6 +9,11 @@ use Yajra\DataTables\Services\DataTable;
 
 class PropertyDataTable extends DataTable
 {
+    const SQL_RAW_FILTER =  [
+        'created_at' => "DATE_FORMAT(properties.created_at, '%Y-%m-%d')",
+        'updated_at' => "DATE_FORMAT(properties.updated_at, '%Y-%m-%d %H:%i')",
+        'deleted_at' => "DATE_FORMAT(properties.deleted_at, '%d-%m-%Y')",
+    ];
     public function ajax()
     {
         $datatable = DataTables::eloquent($this->query())
@@ -30,6 +35,27 @@ class PropertyDataTable extends DataTable
                     ?with(new Carbon($row->deleted_at))->format('d-m-Y')
                     : '';
             })
+            ->filterColumn('created_at', function($query, $keyword)
+            {
+                $query->whereRaw(
+                    self::SQL_RAW_FILTER['created_at'] . 'LIKE ?' ,
+                    ["%$keyword%"]
+                );
+            })
+            ->filterColumn('updated_at', function($query, $keyword)
+            {
+                $query->whereRaw(
+                    self::SQL_RAW_FILTER['updated_at'] . 'LIKE ?' ,
+                    ["%$keyword%"]
+                );
+            })
+            ->filterColumn('deleted_at', function($query, $keyword)
+            {
+                $query->whereRaw(
+                    self::SQL_RAW_FILTER['deleted_at'] . 'LIKE ?' ,
+                    ["%$keyword%"]
+                );
+            })
             ->addColumn('action', function($row)
             {
                 return '';
@@ -41,7 +67,7 @@ class PropertyDataTable extends DataTable
 
     public function query()
     {
-        $rows = Property::withTrashed();
+        $rows = Property::withTrashed()->with('property_type')->select('properties.*');
         return $this->applyScopes($rows);
     }
 }

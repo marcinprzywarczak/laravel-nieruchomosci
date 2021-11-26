@@ -30,7 +30,7 @@ return[
             'count_offers' => 'ilość ofert',
         ]
 
-        ],
+    ],
     "properties" =>
     [
         'title' => 'Nieruchomości',
@@ -44,5 +44,20 @@ return[
             'description' => 'opis',
             'property_type' => 'typ nieruchomości',
         ]
+    ],
+    "offers" =>
+    [
+        'title' => 'Oferty',
+        'attribute' =>
+        [
+            'property' => 'nieruchomość',
+            'offer_status' => 'status oferty',
+            'title' => 'tytuł',
+            'start_date' => 'data wystawienia',
+            'end_date' => 'data zakończenia',
+            'price' => 'cena',
+            'comment' => 'uwagi',
+        ],
     ]
+
 ];

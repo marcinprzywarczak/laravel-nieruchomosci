@@ -130,6 +130,10 @@ return [
         'property_types' => [
             'name_unique' => 'Istnieje już typ nieruchomości, dla którego :attribute ma podaną wartość'
         ],
+        'offer_statuses' =>
+        [
+            'name_unique' => 'Istnieje już status oferty, dla którego :attribute ma podaną wartość'
+        ],
         'properties' => [
             'property_types' => 'Wybrany typ nieruchomości nie istnieje w bazie'
         ]

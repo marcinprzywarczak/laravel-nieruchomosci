@@ -50,6 +50,14 @@ Route::middleware(['auth', 'verified'])->group(function(){
         Route::get('', [OfferStatusController::class, 'index'])
             ->name('index')
             ->middleware(['permission:offer_statuses.index']);
+
+        Route::get('create', [OfferStatusController::class, 'create'])
+            ->name('create')
+            ->middleware(['permission:offer_statuses.store']);
+
+        Route::post('', [OfferStatusController::class, 'store'])
+            ->name('store')
+            ->middleware(['permission:offer_statuses.store']);
     });
 
     Route::name('properties.')->prefix('properties')->group(function()

@@ -9,7 +9,12 @@
     <div class="container">
         <h1>{{ __('translations.offer_statuses.title') }}</h1>
         <div class="d-flex flex-row-reverse mb-4">
-
+            <a href="{{ route('offer_statuses.create') }}"
+            type="button"
+            class="btn btn-light"
+            role="button">
+            {{ __('translations.offer_statuses.label.create') }}
+            </a>
         </div>
         <div id="no-more-tables">
             <table class="table" style="width: 100%;">

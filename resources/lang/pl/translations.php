@@ -40,10 +40,21 @@ return[
     "offer_statuses" =>
     [
         'title' => 'Statusy ofert',
+        'label' =>
+        [
+            'create' => 'Dodanie nowego statusu oferty'
+        ],
         'attribute'=>
         [
             'name' => 'nazwa',
             'count_offers' => 'ilość ofert',
+        ],
+        'flashes' =>
+        [
+            'success' =>
+            [
+                'stored' => 'Dodano status oferty :name',
+            ]
         ]
 
     ],

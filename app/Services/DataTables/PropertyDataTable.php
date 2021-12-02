@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use App\Models\Property;
 use Yajra\DataTables\Facades\DataTables;
 use Yajra\DataTables\Services\DataTable;
+use Illuminate\View\ComponentAttributeBag;
 
 class PropertyDataTable extends DataTable
 {
@@ -58,7 +59,14 @@ class PropertyDataTable extends DataTable
             })
             ->addColumn('action', function($row)
             {
-                return '';
+                return view('components.datatables.action-link', [
+                    'slot' => 'Oferty',
+                    'attributes' => new ComponentAttributeBag([
+                        'url' => route('properties.offers', $row),
+                        'title' =>  __('translations.propertis.labels.details'),
+                        'class' => 'btn btn-primary'
+                    ])
+                ])->render();;
             })
             ->rawColumns(['action']);
 

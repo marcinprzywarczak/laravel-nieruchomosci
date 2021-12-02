@@ -17,6 +17,16 @@ class PropertyController extends Controller
     {
         return $dataTable->render('properties.index');
     }
+    public function index2()
+    {
+        return view(
+            'properties.index2',
+            [
+                'properties' => Property::with('property_type')->with('offer')->with('offer_status')
+                                ->select('properties.*')->paginate(config('app.default_page_size'))
+            ]
+            );
+    }
     public function offers(Property $property)
     {
         $offers = $property->offers;

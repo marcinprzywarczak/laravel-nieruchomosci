@@ -239,4 +239,5 @@ return [
     ],
     'admin_role' => env('ADMIN_ROLE', 'admin'),
     'user_role' => env('USER_ROLE', 'user'),
+    'default_page_size' => 10,
 ];

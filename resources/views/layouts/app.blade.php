@@ -18,4 +18,5 @@
         {{ $scripts }}
         
     </x-slot>
+    @include('layouts.toasts')
 </x-base-layout>

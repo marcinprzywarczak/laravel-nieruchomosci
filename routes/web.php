@@ -26,6 +26,9 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 
+Route::get('/properties2', [PropertyController::class, 'index2'])->name('properties2');
+
+
 require __DIR__.'/auth.php';
 
 Route::middleware(['auth', 'verified'])->group(function(){

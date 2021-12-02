@@ -16,8 +16,8 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>{{ __('translations.offers.attribute.property') }}</th>
                         <th>{{ __('translations.offers.attribute.offer_status') }}</th>
+                        <th>{{ __('translations.offers.attribute.property') }}</th>
                         <th>{{ __('translations.offers.attribute.title') }}</th>
                         <th>{{ __('translations.offers.attribute.start_date') }}</th>
                         <th>{{ __('translations.offers.attribute.end_date') }}</th>
@@ -29,7 +29,25 @@
                         <th class="always-visible"></th>
                     </tr>
                 </thead>
-                
+                <tbody>
+                    @foreach ($offers as $offer )
+                        <tr>
+                            <td>{{ $offer->id }}</td>
+                            
+                            <td>{{ $offer->offer_status->name }}</td>
+                            <td>{{ $offer->property->id }}</td>
+                            <td>{{ $offer->title }}</td>
+                            <td>{{ $offer->start_date }}</td>
+                            <td>{{ $offer->end_date }}</td>
+                            <td>{{ $offer->price }}</td>
+                            <td>{{ $offer->comment }}</td>
+                            <td>{{ $offer->created_at }}</td>
+                            <td>{{ $offer->updated_at }}</td>
+                            <td>{{ $offer->deleted_at }}</td>
+                            <td></td>
+                        </tr>
+                    @endforeach
+                </tbody>
             </table>
         </div>
     </div>

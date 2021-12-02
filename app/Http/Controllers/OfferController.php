@@ -2,19 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Offer;
 use App\Http\Controllers\Controller;
-use App\Services\DataTables\OfferDataTable;
 
 class OfferController extends Controller
 {
-    public function index(OfferDataTable $dataTable)
+    public function index()
     {
-        return $dataTable->render('offers.index');
+        return view(
+            'offers.index',
+            [
+                'offers' => Offer::withTrashed()->get()
+            ]
+            );
     }
+    
 
-    public function dataTable(OfferDataTable $dataTable)
-    {
-        return $dataTable->render('offers.index');
-    }
 
 }

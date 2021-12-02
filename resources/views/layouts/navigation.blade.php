@@ -40,6 +40,11 @@
             </li>
             @endcan
             <li class="nav-item">
+                <x-nav-link :href="route('properties2')" :active="request()->routeIs('properties2')">
+                    {{ __('translations.properties.title') }}
+                </x-nav-link>
+            </li>
+            <li class="nav-item">
                 <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                     Dashboard
                 </x-nav-link>

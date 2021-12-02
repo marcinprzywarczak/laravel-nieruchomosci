@@ -3,8 +3,6 @@
 /public/storage
 /storage/*.key
 /vendor
-/public/css
-/public/js
 .env
 .env.backup
 .phpunit.result.cache
@@ -16,3 +14,5 @@ yarn-error.log
 /.idea
 /.vscode
 public/js/manifest.js
+/public/css/
+/public/js/

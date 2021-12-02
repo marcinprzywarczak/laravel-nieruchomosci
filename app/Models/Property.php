@@ -36,9 +36,13 @@ class Property extends Model
     public function offer_status()
     {
         return $this->hasManyThrough(OfferStatus::class, Offer::class,
-                                    'id',
                                     'property_id',
                                     'id',
+                                    'id',
                                     'offer_status_id');
+    }
+    public function offer()
+    {
+        return $this->hasOne(Offer::class)->ofMany('start_date', 'max');
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Offer;
+use App\Models\OfferStatus;
 use App\Models\PropertyType;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -15,7 +16,7 @@ class Property extends Model
     protected $fillable =
     [
         'property_type_id',
-        'adress',
+        'address',
         'area_square_meters',
         'rooms',
         'floor',
@@ -31,5 +32,13 @@ class Property extends Model
     public function property_type()
     {
         return $this->belongsTo(PropertyType::class);
+    }
+    public function offer_status()
+    {
+        return $this->hasManyThrough(OfferStatus::class, Offer::class,
+                                    'id',
+                                    'property_id',
+                                    'id',
+                                    'offer_status_id');
     }
 }

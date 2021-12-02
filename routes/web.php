@@ -49,6 +49,10 @@ Route::middleware(['auth', 'verified'])->group(function(){
         Route::post('/datatable', [PropertyController::class, 'dataTable'])
             ->name('datatable')
             ->middleware(['permission:properties.index']);
+        Route::get('{property}/offers', [PropertyController::class, 'offers'])
+            ->where('property', '[0-9]+')
+            ->name('offers')
+            ->middleware(['permission:properties.index']);
     });
     Route::name('offers.')->prefix('offers')->group(function()
     {

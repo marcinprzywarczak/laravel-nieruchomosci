@@ -11,14 +11,30 @@ return[
         'deleted_at' => 'usunięto'
     ],
     'labels' => [],
+    'buttons' =>
+    [
+        'cancel' => 'Anuluj',
+        'store' => 'Dodaj'
+    ],
     'property_types' => 
     [
         'title' => 'Typy nieruchomości',
+        'label' =>
+        [
+            'create' => 'Dodanie nowego typu nieruchomości'
+        ],
         'attribute' =>
         [
             'name' => 'nazwa',
             'address' => 'adres',
             'count_properties' => 'ilość nieruchomości'
+        ],
+        'flashes' =>
+        [
+            'success' =>
+            [
+                'stored' => 'Dodano typ nieruchomości :name',
+            ]
         ]
     ],
     "offer_statuses" =>

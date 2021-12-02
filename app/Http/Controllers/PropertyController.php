@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Property;
+use App\Models\PropertyType;
 use App\Http\Controllers\Controller;
 use App\Services\DataTables\PropertyDataTable;
+use App\Http\Requests\Properties\PropertyRequest;
 
 class PropertyController extends Controller
 {
@@ -36,5 +38,28 @@ class PropertyController extends Controller
                 'offers' => $offers
             ]
             );
+    }
+
+    public function create()
+    {
+        return view('properties.create', 
+        [
+            'property_types' => PropertyType::orderBy('name')->get()
+        ]);
+    }
+
+    public function store(PropertyRequest $request)
+    {
+        
+
+
+        $property = Property::create(
+            $request->all()
+        );      
+        return redirect()->route('properties.index')
+            ->with('success', __('translations.properties.flashes.success.stored', [
+                'address' => $property->address,
+                'id' => $property->id
+            ]));
     }
 }

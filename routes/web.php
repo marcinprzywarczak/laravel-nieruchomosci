@@ -72,6 +72,14 @@ Route::middleware(['auth', 'verified'])->group(function(){
             ->where('property', '[0-9]+')
             ->name('offers')
             ->middleware(['permission:properties.index']);
+
+        Route::get('create', [PropertyController::class, 'create'])
+            ->name('create')
+            ->middleware(['permission:properties.store']);
+
+        Route::post('', [PropertyController::class, 'store'])
+            ->name('store')
+            ->middleware(['permission:properties.store']);
     });
     Route::name('offers.')->prefix('offers')->group(function()
     {

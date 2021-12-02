@@ -9,7 +9,12 @@
     <div class="container">
         <h1>{{ __('translations.properties.title') }}</h1>
         <div class="d-flex flex-row-reverse mb-4">
-
+            <a href="{{ route('properties.create') }}"
+            type="button"
+            class="btn btn-light"
+            role="button">
+            {{ __('translations.properties.label.create') }}
+            </a>
         </div>
         <div id="no-more-tables">
             <table class="table" style="width: 100%;">

@@ -10,7 +10,9 @@ return[
         'updated_at' => 'zaktualizowano',
         'deleted_at' => 'usunięto'
     ],
-    'labels' => [],
+    'labels' => [
+        'select2-placeholder' => 'Wybierz opcję'
+    ],
     'buttons' =>
     [
         'cancel' => 'Anuluj',
@@ -61,6 +63,10 @@ return[
     "properties" =>
     [
         'title' => 'Nieruchomości',
+        'label' =>
+        [
+            'create' => 'Dodanie nowej nieruchomości'
+        ],
         'attribute'=>
         [
             'address' => 'adres',
@@ -70,6 +76,13 @@ return[
             'number_of_floor' => 'liczba pięter',
             'description' => 'opis',
             'property_type' => 'typ nieruchomości',
+        ],
+        'flashes' =>
+        [
+            'success' =>
+            [
+                'stored' => 'Dodano nieruchomość o id :id i adresie :address',
+            ]
         ]
     ],
     "offers" =>

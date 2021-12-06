@@ -26,7 +26,7 @@ class Property extends Model
 
     public function offers()
     {
-        return $this->hasMany(Offer::class);
+        return $this->hasMany(Offer::class)->withTrashed();
     }
 
     public function property_type()

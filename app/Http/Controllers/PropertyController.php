@@ -35,7 +35,8 @@ class PropertyController extends Controller
         return view(
             'offers.index',
             [
-                'offers' => $offers
+                'offers' => $offers,
+                'property' => $property
             ]
             );
     }

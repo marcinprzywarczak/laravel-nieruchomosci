@@ -77,6 +77,16 @@ Route::middleware(['auth', 'verified'])->group(function(){
             ->name('create')
             ->middleware(['permission:properties.store']);
 
+        Route::get('{property}/create_offer', [OfferController::class, 'create_offer'])
+            ->where('property', '[0-9]+')
+            ->name('create_offer')
+            ->middleware(['permission:offers.store']);
+
+        Route::post('{property}/store_offer', [OfferController::class, 'store_offer'])
+            ->where('property', '[0-9]+')
+            ->name('store_offer')
+            ->middleware(['permission:offers.store']);
+
         Route::post('', [PropertyController::class, 'store'])
             ->name('store')
             ->middleware(['permission:properties.store']);
@@ -89,5 +99,12 @@ Route::middleware(['auth', 'verified'])->group(function(){
         Route::post('/datatable', [OfferController::class, 'dataTable'])
             ->name('datatable')
             ->middleware(['permission:offers.index']);
+
+        Route::get('create', [OfferController::class, 'create'])
+            ->name('create')
+            ->middleware(['permission:offers.store']);
+        Route::post('', [OfferController::class, 'store'])
+            ->name('store')
+            ->middleware(['permission:offers.store']);
     });
 });

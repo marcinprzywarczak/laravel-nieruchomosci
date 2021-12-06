@@ -9,7 +9,17 @@
     <div class="container">
         <h1>{{ __('translations.offers.title') }}</h1>
         <div class="d-flex flex-row-reverse mb-4">
-
+            <a href=" 
+                @if (isset($property))
+                    {{ route('properties.create_offer', $property) }}
+                @else
+                    {{ route('offers.create') }}
+                @endif "
+            type="button"
+            class="btn btn-light"
+            role="button">
+            {{ __('translations.offers.label.create') }}
+            </a>
         </div>
         <div id="no-more-tables">
             <table class="table" style="width: 100%;">

@@ -65,7 +65,8 @@ return[
         'title' => 'Nieruchomości',
         'label' =>
         [
-            'create' => 'Dodanie nowej nieruchomości'
+            'create' => 'Dodanie nowej nieruchomości',
+            'offers' => 'Wyświetl oferty dla tej nieruchomości'
         ],
         'attribute'=>
         [
@@ -88,6 +89,10 @@ return[
     "offers" =>
     [
         'title' => 'Oferty',
+        'label' =>
+        [
+            'create' => 'Dodanie nowej oferty'
+        ],
         'attribute' =>
         [
             'property' => 'nieruchomość',
@@ -98,6 +103,13 @@ return[
             'price' => 'cena',
             'comment' => 'uwagi',
         ],
+        'flashes' =>
+        [
+            'success' =>
+            [
+                'stored' => 'Dodano ofertę o id :id dla nieruchomości o id :property_id',
+            ]
+        ]
     ]
 
 ];

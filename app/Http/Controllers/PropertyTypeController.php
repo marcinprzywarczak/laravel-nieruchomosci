@@ -33,4 +33,33 @@ class PropertyTypeController extends Controller
                 'name' => $property_type->name
             ]));
     }
+
+    public function edit(PropertyType $property_type)
+    {
+        $edit = true;
+        return view(
+            'property_types.create',
+            compact('property_type', ['edit'])
+            
+        );
+    }
+
+    public function update(PropertyTypeRequest $request, PropertyType $property_type)
+    {
+        //dd($request->all());
+        $property_type->fill(
+            $request->all()
+        )->save();
+        return redirect()->route('property_types.index')
+            ->with(
+                'success',
+                __($property_type->wasChanged()
+                    ? 'translations.property_types.flashes.success.updated'
+                    : 'translations.property_types.flashes.success.nothing-changed',
+                    [
+                        'name' => $property_type->name
+                    ]
+                    )
+                    );
+    }
 }

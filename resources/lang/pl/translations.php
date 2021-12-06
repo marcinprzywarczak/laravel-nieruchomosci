@@ -16,14 +16,16 @@ return[
     'buttons' =>
     [
         'cancel' => 'Anuluj',
-        'store' => 'Dodaj'
+        'store' => 'Dodaj',
+        'update' => 'Aktualizuj'
     ],
     'property_types' => 
     [
         'title' => 'Typy nieruchomości',
         'label' =>
         [
-            'create' => 'Dodanie nowego typu nieruchomości'
+            'create' => 'Dodanie nowego typu nieruchomości',
+            'edit' => 'Edycja danych typu nieruchomości'
         ],
         'attribute' =>
         [
@@ -36,6 +38,8 @@ return[
             'success' =>
             [
                 'stored' => 'Dodano typ nieruchomości :name',
+                'updated' => 'Zaktualizowano typ nieruchomości :name',
+                'nothing-changed' => 'Dane typu nieruchomosci :name nie zmieniły się'
             ]
         ]
     ],

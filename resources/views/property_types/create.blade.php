@@ -13,9 +13,24 @@
         <h1>{{ __('translations.property_types.title') }}</h1>
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">{{ __('translations.property_types.label.create') }}</h5>
+                <h5 class="card-title">
+                    @if (isset($edit) && $edit === true)
+                        {{ __('translations.property_types.label.edit') }}
+                    @else
+                        {{ __('translations.property_types.label.create') }}
+                    @endif
+                    
+                </h5>
                 <form id="property_types-form" method="POST"
-                    action="{{ route('property_types.store') }}">
+                @if (isset($edit) && $edit === true)
+                    action="{{ route('property_types.update', $property_type) }}"
+                @else
+                    action="{{ route('property_types.store') }}"
+                @endif
+                    >
+                    @if (isset($edit) && $edit === true)
+                        @method('PATCH')
+                    @endif
                     @csrf
                     <div class="row mb-3">
                         <label for="property_type-name" class="col-sm-2 col-form-label">
@@ -23,7 +38,13 @@
                         </label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control @error('name') is-invalid @enderror" name="name"
-                            id="property_type-name" value="{{ old('name') }}">
+                            id="property_type-name" 
+                            @if(isset($property_type))
+                                value="{{ $property_type->name }}"
+                            @else
+                                value="{{ old('name') }}"
+                            @endif
+                            >
                             @error('name')
                                 <span class="invalid-feedback" role="alert">
                                     {{ $message }}
@@ -38,7 +59,12 @@
                                 {{ __('translations.buttons.cancel') }}
                             </a>
                             <button type="submit" class="btn btn-primary">
-                                {{ __('translations.buttons.store') }}
+                                @if (isset($edit) && $edit===true)
+                                    {{ __('translations.buttons.update') }}
+                                @else
+                                    {{ __('translations.buttons.store') }}
+                                @endif
+                                
                             </button>
                         </div>
                     </div>

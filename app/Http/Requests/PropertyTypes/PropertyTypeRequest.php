@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\PropertyTypes;
 
+use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class PropertyTypeRequest extends FormRequest
@@ -25,7 +26,8 @@ class PropertyTypeRequest extends FormRequest
     {
         return [
                 'name' => [
-                    'required', 'string', 'max:100', 'unique:property_types'
+                    'required', 'string', 'max:100',
+                    Rule::unique('property_types')->ignore($this->property_type)
                 ],
             
         ];

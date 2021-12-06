@@ -38,7 +38,16 @@
                             <td>{{ $property_type->updated_at }}</td>
                             <td>{{ $property_type->deleted_at }}</td>
                             <td>{{ $property_type->properties_count }}</td>
-                            <td></td>
+                            <td>
+                                <div class="btn-group" role="group" aria-label="action buttons">
+                                    @can('property_types.store')
+                                        <x-datatables.action-link class="btn btn-primary"
+                                            url="{{ route('property_types.edit', $property_type) }}"
+                                            title="{{ __('translations.property_types.label.edit')}}">
+                                            <i class="bi-pencil"></i>
+                                        </x-action-link>
+                                    @endcan
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>

@@ -63,7 +63,7 @@ class PropertyDataTable extends DataTable
                     'slot' => 'Oferty',
                     'attributes' => new ComponentAttributeBag([
                         'url' => route('properties.offers', $row),
-                        'title' =>  __('translations.propertis.labels.details'),
+                        'title' =>  __('translations.properties.label.offers'),
                         'class' => 'btn btn-primary'
                     ])
                 ])->render();;

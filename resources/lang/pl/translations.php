@@ -48,7 +48,8 @@ return[
         'title' => 'Statusy ofert',
         'label' =>
         [
-            'create' => 'Dodanie nowego statusu oferty'
+            'create' => 'Dodanie nowego statusu oferty',
+            'edit' => 'Edycja danych statusu oferty'
         ],
         'attribute'=>
         [
@@ -60,6 +61,8 @@ return[
             'success' =>
             [
                 'stored' => 'Dodano status oferty :name',
+                'updated' => 'Zaktualizowano status oferty :name',
+                'nothing-changed' => 'Dane statusu oferty :name nie zmieniły się'
             ]
         ]
 

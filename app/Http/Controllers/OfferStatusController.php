@@ -36,4 +36,33 @@ class OfferStatusController extends Controller
                 'name' =>  $offer_status->name
             ]));
     }
+
+    public function edit(OfferStatus $offer_status)
+    {
+        $edit = true;
+        return view(
+            'offer_statuses.create',
+            compact('offer_status', ['edit'])
+            
+        );
+    }
+
+    public function update(OfferStatusRequest $request, OfferStatus $offer_status)
+    {
+        //dd($request->all());
+        $offer_status->fill(
+            $request->all()
+        )->save();
+        return redirect()->route('offer_statuses.index')
+            ->with(
+                'success',
+                __($offer_status->wasChanged()
+                    ? 'translations.offer_statuses.flashes.success.updated'
+                    : 'translations.offer_statuses.flashes.success.nothing-changed',
+                    [
+                        'name' => $offer_status->name
+                    ]
+                    )
+                    );
+    }
 }

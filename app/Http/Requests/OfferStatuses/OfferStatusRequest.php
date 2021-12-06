@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\OfferStatuses;
 
+use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class OfferStatusRequest extends FormRequest
@@ -25,7 +26,8 @@ class OfferStatusRequest extends FormRequest
     {
         return [
                 'name' => [
-                    'required', 'string', 'max:100', 'unique:offer_statuses'
+                    'required', 'string', 'max:100', 
+                    Rule::unique('offer_statuses')->ignore($this->offer_status)
                 ],
             
         ];

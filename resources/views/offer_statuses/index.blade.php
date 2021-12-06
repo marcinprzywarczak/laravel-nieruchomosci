@@ -38,7 +38,16 @@
                             <td>{{ $offer_status->updated_at }}</td>
                             <td>{{ $offer_status->deleted_at }}</td>
                             <td>{{ $offer_status->offers_count }}</td>
-                            <td></td>
+                            <td>
+                                <div class="btn-group" role="group" aria-label="action buttons">
+                                @can('offer_statuses.store')
+                                    <x-datatables.action-link class="btn btn-primary"
+                                        url="{{ route('offer_statuses.edit', $offer_status) }}"
+                                        title="{{ __('translations.offer_statuses.label.edit')}}">
+                                        <i class="bi-pencil"></i>
+                                    </x-action-link>
+                                @endcan
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>

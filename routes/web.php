@@ -68,6 +68,16 @@ Route::middleware(['auth', 'verified'])->group(function(){
         Route::post('', [OfferStatusController::class, 'store'])
             ->name('store')
             ->middleware(['permission:offer_statuses.store']);
+
+        Route::get('{offer_status}/edit', [OfferStatusController::class, 'edit'])
+            ->where('offer_status', '[0-9]+')
+            ->name('edit')
+            ->middleware(['permission:offer_statuses.store']);
+
+        Route::patch('{offer_status}', [OfferStatusController::class, 'update'])
+            ->where('offer_status', '[0-9]+')
+            ->name('update')
+            ->middleware(['permission:offer_statuses.store']);
     });
 
     Route::name('properties.')->prefix('properties')->group(function()

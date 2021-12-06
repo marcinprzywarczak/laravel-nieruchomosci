@@ -63,4 +63,34 @@ class PropertyController extends Controller
                 'id' => $property->id
             ]));
     }
+
+    public function edit(Property $property)
+    {
+        $edit = true;
+        $property_types = PropertyType::orderBy('name')->get();
+        return view(
+            'properties.create',
+            compact('property', 'edit', 'property_types')
+            
+        );
+    }
+
+    public function update(PropertyRequest $request, Property $property)
+    {
+        //dd($request->all());
+        $property->fill(
+            $request->all()
+        )->save();
+        return redirect()->route('properties.index')
+            ->with(
+                'success',
+                __($property->wasChanged()
+                    ? 'translations.properties.flashes.success.updated'
+                    : 'translations.properties.flashes.success.nothing-changed',
+                    [
+                        'address' => $property->address
+                    ]
+                    )
+                    );
+    }
 }

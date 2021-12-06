@@ -59,16 +59,7 @@ class PropertyDataTable extends DataTable
             })
             ->addColumn('action', function($row)
             {
-                '<div class="btn-group" role="group" aria-label="action buttons">';
-                return view('components.datatables.action-link', [
-                    'slot' => 'Oferty',
-                    'attributes' => new ComponentAttributeBag([
-                        'url' => route('properties.offers', $row),
-                        'title' =>  __('translations.properties.label.offers'),
-                        'class' => 'btn btn-primary'
-                    ])
-                ])->render();
-                '</div>';
+                return $this->getActionButtons($row);
             })
             ->rawColumns(['action']);
 
@@ -79,5 +70,40 @@ class PropertyDataTable extends DataTable
     {
         $rows = Property::withTrashed()->with('property_type')->select('properties.*');
         return $this->applyScopes($rows);
+    }
+
+    private function getActionButtons(Property $property): string
+    {
+        $buttons = '<div class="btn-group" role="group" aria-label="action buttons">';
+        $buttons .= $this->getEditButton($property);
+        $buttons .= $this->getOffersButton($property);
+        $buttons .= '</div>';
+        return $buttons;
+    }
+
+    private function getEditButton(Property $property): string
+    {
+        
+        return view('components.datatables.action-link', [
+            'slot' => '<i class="bi-pencil"></i>',
+            'attributes' => new ComponentAttributeBag([
+                'url' => route('properties.edit', $property),
+                'title' =>  __('translations.properties.label.edit'),
+                'class' => 'btn btn-primary'
+            ])
+        ])->render();
+    }
+
+    private function getOffersButton(Property $property): string
+    {
+        
+        return view('components.datatables.action-link', [
+            'slot' => 'Oferty',
+            'attributes' => new ComponentAttributeBag([
+                'url' => route('properties.offers', $property),
+                'title' =>  __('translations.properties.label.offers'),
+                'class' => 'btn btn-secondary'
+            ])
+        ])->render();
     }
 }

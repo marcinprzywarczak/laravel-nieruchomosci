@@ -110,6 +110,16 @@ Route::middleware(['auth', 'verified'])->group(function(){
         Route::post('', [PropertyController::class, 'store'])
             ->name('store')
             ->middleware(['permission:properties.store']);
+
+        Route::get('{property}/edit', [PropertyController::class, 'edit'])
+            ->where('property', '[0-9]+')
+            ->name('edit')
+            ->middleware(['permission:properties.store']);
+
+        Route::patch('{property}', [PropertyController::class, 'update'])
+            ->where('property', '[0-9]+')
+            ->name('update')
+            ->middleware(['permission:properties.store']);
     });
     Route::name('offers.')->prefix('offers')->group(function()
     {

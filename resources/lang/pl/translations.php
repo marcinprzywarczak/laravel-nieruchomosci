@@ -73,7 +73,8 @@ return[
         'label' =>
         [
             'create' => 'Dodanie nowej nieruchomości',
-            'offers' => 'Wyświetl oferty dla tej nieruchomości'
+            'offers' => 'Wyświetl oferty dla tej nieruchomości',
+            'edit' => 'Edycja danych nieruchomości'
         ],
         'attribute'=>
         [
@@ -90,6 +91,8 @@ return[
             'success' =>
             [
                 'stored' => 'Dodano nieruchomość o id :id i adresie :address',
+                'updated' => 'Zaktualizowano nieruchomość o adresie :address',
+                'nothing-changed' => 'Dane nieruchomości o adresie :address nie zmieniły się'
             ]
         ]
     ],

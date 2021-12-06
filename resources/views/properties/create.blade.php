@@ -13,9 +13,24 @@
         <h1>{{ __('translations.properties.title') }}</h1>
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">{{ __('translations.properties.label.create') }}</h5>
+                <h5 class="card-title">
+                    @if (isset($edit) && $edit === true)
+                    {{ __('translations.properties.label.edit') }}
+                    @else
+                    {{ __('translations.properties.label.create') }}
+                    @endif
+                    
+                </h5>
                 <form id="properties-form" method="POST"
-                    action="{{ route('properties.store') }}">
+                    @if (isset($edit) && $edit === true)
+                        action="{{ route('properties.update', $property) }}"
+                    @else
+                        action="{{ route('properties.store') }}"
+                    @endif
+                    >
+                    @if (isset($edit) && $edit === true)
+                        @method('PATCH')
+                    @endif
                     @csrf
 
                     <div class="row mb-3">
@@ -29,7 +44,9 @@
                             aria-describedby="property-property_type-error">
                                 <option selected disabled>{{ __('translations.labels.select2-placeholder') }}</option>
                                 @foreach ($property_types as $property_type )
-                                @if (($property_type->id) == old('property_type_id'))
+                                @if (($property_type->id) === old('property_type_id'))
+                                    <option value="{{ $property_type->id }}" selected>{{ $property_type->name }}</option>
+                                @elseif ((isset($property)) && (($property_type->id) === ($property->property_type_id)))
                                     <option value="{{ $property_type->id }}" selected>{{ $property_type->name }}</option>
                                 @else
                                     <option value="{{ $property_type->id }}">{{ $property_type->name }}</option>
@@ -54,7 +71,7 @@
                         </label>
                         <div class="col-sm-10">
                             <textarea class="form-control @error('address') is-invalid @enderror" name="address"
-                            id="property-address" rows="3">{{ old('address') }}</textarea>
+                            id="property-address" rows="3">@if (isset($property)){{ $property->address }}@else{{ old('address') }}@endif</textarea>
                             @error('address')
                                 <span class="invalid-feedback" role="alert">
                                     {{ $message }}
@@ -70,7 +87,13 @@
                         </label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control @error('area_square_meters') is-invalid @enderror" name="area_square_meters"
-                            id="property-area_square_meters" value="{{ old('area_square_meters') }}">
+                            id="property-area_square_meters" 
+                            @if(isset($property))
+                                value="{{ $property->area_square_meters }}"
+                            @else
+                                value="{{ old('area_square_meters') }}"
+                            @endif
+                            >
                             @error('area_square_meters')
                                 <span class="invalid-feedback" role="alert">
                                     {{ $message }}
@@ -85,7 +108,13 @@
                         </label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control @error('rooms') is-invalid @enderror" name="rooms"
-                            id="property-rooms" value="{{ old('rooms') }}">
+                            id="property-rooms" 
+                            @if(isset($property))
+                                value="{{ $property->rooms }}"
+                            @else
+                                value="{{ old('rooms') }}"
+                            @endif
+                            >
                             @error('rooms')
                                 <span class="invalid-feedback" role="alert">
                                     {{ $message }}
@@ -100,7 +129,13 @@
                         </label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control @error('floor') is-invalid @enderror" name="floor"
-                            id="property-floor" value="{{ old('floor') }}">
+                            id="property-floor" 
+                            @if(isset($property))
+                                value="{{ $property->floor }}"
+                            @else
+                                value="{{ old('floor') }}"
+                            @endif
+                            >
                             @error('floor')
                                 <span class="invalid-feedback" role="alert">
                                     {{ $message }}
@@ -115,7 +150,13 @@
                         </label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control @error('number_of_floor') is-invalid @enderror" name="number_of_floor"
-                            id="property-number_of_floor" value="{{ old('number_of_floor') }}">
+                            id="property-number_of_floor" 
+                            @if(isset($property))
+                                value="{{ $property->number_of_floor }}"
+                            @else
+                                value="{{ old('number_of_floor') }}"
+                            @endif
+                            >
                             @error('number_of_floor')
                                 <span class="invalid-feedback" role="alert">
                                     {{ $message }}
@@ -130,7 +171,7 @@
                         </label>
                         <div class="col-sm-10">
                             <textarea class="form-control @error('description') is-invalid @enderror" name="description"
-                            id="property-description" rows="3" >{{ old('description') }}</textarea>
+                            id="property-description" rows="3" >@if (isset($property)){{ $property->description }}@else{{ old('description') }}@endif</textarea>
                             @error('description') 
                                 <span class="invalid-feedback" role="alert">
                                     {{ $message }}
@@ -145,7 +186,11 @@
                                 {{ __('translations.buttons.cancel') }}
                             </a>
                             <button type="submit" class="btn btn-primary">
-                                {{ __('translations.buttons.store') }}
+                                @if (isset($edit) && $edit===true)
+                                    {{ __('translations.buttons.update') }}
+                                @else
+                                    {{ __('translations.buttons.store') }}
+                                @endif
                             </button>
                         </div>
                     </div>

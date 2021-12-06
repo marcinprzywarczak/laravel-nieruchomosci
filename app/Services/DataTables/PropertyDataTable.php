@@ -59,6 +59,7 @@ class PropertyDataTable extends DataTable
             })
             ->addColumn('action', function($row)
             {
+                '<div class="btn-group" role="group" aria-label="action buttons">';
                 return view('components.datatables.action-link', [
                     'slot' => 'Oferty',
                     'attributes' => new ComponentAttributeBag([
@@ -66,7 +67,8 @@ class PropertyDataTable extends DataTable
                         'title' =>  __('translations.properties.label.offers'),
                         'class' => 'btn btn-primary'
                     ])
-                ])->render();;
+                ])->render();
+                '</div>';
             })
             ->rawColumns(['action']);
 

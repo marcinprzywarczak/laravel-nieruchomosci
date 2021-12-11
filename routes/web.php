@@ -49,6 +49,14 @@ Route::middleware(['auth', 'verified'])->group(function(){
         Route::patch('{property_type}', [PropertyTypeController::class, 'update'])
             ->where('property_type', '[0-9]+')
             ->name('update');
+
+        Route::delete('{property_type}', [PropertyTypeController::class, 'destroy'])
+            ->where('property_type', '[0-9]+')
+            ->name('destroy');
+
+        Route::put('{id}/restore', [PropertyTypeController::class, 'restore'])
+            ->where('id', '[0-9]+')
+            ->name('restore');
     });
 
     Route::name('offer_statuses.')->prefix('offer_statuses')->group(function(){

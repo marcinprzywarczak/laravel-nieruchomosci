@@ -44,7 +44,7 @@
                             aria-describedby="property-property_type-error">
                                 <option selected disabled>{{ __('translations.labels.select2-placeholder') }}</option>
                                 @foreach ($property_types as $property_type )
-                                @if (($property_type->id) === old('property_type_id'))
+                                @if (($property_type->id) == old('property_type_id'))
                                     <option value="{{ $property_type->id }}" selected>{{ $property_type->name }}</option>
                                 @elseif ((isset($property)) && (($property_type->id) === ($property->property_type_id)))
                                     <option value="{{ $property_type->id }}" selected>{{ $property_type->name }}</option>

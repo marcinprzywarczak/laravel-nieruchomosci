@@ -47,6 +47,7 @@
                                         <i class="bi-pencil"></i>
                                     </x-action-link>
                                 @endcan
+                                </div>
                             </td>
                         </tr>
                     @endforeach

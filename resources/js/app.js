@@ -1,3 +1,5 @@
+window._ = require('lodash');
+
 //require('./bootstrap');
 //require('alpinejs');
 window.$ = window.jQuery = require('jquery');
@@ -16,3 +18,5 @@ var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggl
 tooltipTriggerList.map(function (tooltipTriggerEl){
     return new bootstrap.Tooltip(tooltipTriggerEl);
 });
+
+window.Swal = require('sweetalert2');

@@ -17,7 +17,9 @@ return[
     [
         'cancel' => 'Anuluj',
         'store' => 'Dodaj',
-        'update' => 'Aktualizuj'
+        'update' => 'Aktualizuj',
+        'yes' => 'Tak',
+        'no' => 'Nie'
     ],
     'property_types' => 
     [
@@ -25,7 +27,11 @@ return[
         'label' =>
         [
             'create' => 'Dodanie nowego typu nieruchomości',
-            'edit' => 'Edycja danych typu nieruchomości'
+            'edit' => 'Edycja danych typu nieruchomości',
+            'destroy' => 'Usunięcie typu nieruchomości',
+            'destroy-question' => 'Czy na pewno usunąc typ nieruchomości :name?',
+            'restore' => 'Anulowanie usunięcia typu nieruchomości',
+            'restore-question' => 'Czy anulować usunięcie typu nieruchomości :name?',
         ],
         'attribute' =>
         [
@@ -40,7 +46,9 @@ return[
             [
                 'stored' => 'Dodano typ nieruchomości :name',
                 'updated' => 'Zaktualizowano typ nieruchomości :name',
-                'nothing-changed' => 'Dane typu nieruchomosci :name nie zmieniły się'
+                'nothing-changed' => 'Dane typu nieruchomosci :name nie zmieniły się',
+                'destroy' => 'Typ nieruchomości :name został usunięty',
+                'restore' => 'Usunięcie typu nieruchomości :name zostało anulowane',
             ]
         ]
     ],

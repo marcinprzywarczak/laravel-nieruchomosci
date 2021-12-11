@@ -53,6 +53,28 @@
                                             <i class="bi-pencil"></i>
                                         </x-action-link>
                                     @endcan
+                                    @can('delete', $property_type)
+                                        <x-confirm
+                                            :action="route('property_types.destroy', $property_type)" method="DELETE"
+                                            :confirm-text="__('translations.buttons.yes')" confirm-class="btn btn-danger me-2"
+                                            :cancel-text="__('translations.buttons.no')" cancel-class="btn btn-secondary ms-2"
+                                            icon="question"
+                                            :message="__('translations.property_types.label.destroy-question', ['name' => $property_type->name] )" 
+                                            button-class="btn btn-danger" :button-title="__('translations.property_types.label.destroy')">
+                                            <i class="bi bi-trash"></i>
+                                        </x-confirm>
+                                    @endcan
+                                    @can('restore', $property_type)
+                                        <x-confirm
+                                            :action="route('property_types.restore', $property_type)" method="PUT"
+                                            :confirm-text="__('translations.buttons.yes')" confirm-class="btn btn-success me-2"
+                                            :cancel-text="__('translations.buttons.no')" cancel-class="btn btn-secondary ms-2"
+                                            icon="question"
+                                            :message="__('translations.property_types.label.restore-question', ['name' => $property_type->name] )" 
+                                            button-class="btn btn-success" :button-title="__('translations.property_types.label.restore')">
+                                            <i class="bi bi-trash"></i>
+                                        </x-confirm>   
+                                    @endcan
                             </td>
                         </tr>
                     @endforeach

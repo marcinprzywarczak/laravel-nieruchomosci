@@ -12,5 +12,9 @@
     "/css/offers.css": "/css/offers.css",
     "/css/form.css": "/css/form.css",
     "/js/vendor.js": "/js/vendor.js",
-    "/vendor/datatables/i18n/pl.json": "/vendor/datatables/i18n/pl.json"
+    "/vendor/datatables/i18n/pl.json": "/vendor/datatables/i18n/pl.json",
+    "/resources/views/vendor/jsvalidation/bootstrap.php": "/resources/views/vendor/jsvalidation/bootstrap.php",
+    "/resources/views/vendor/jsvalidation/bootstrap4.php": "/resources/views/vendor/jsvalidation/bootstrap4.php",
+    "/resources/views/vendor/jsvalidation/bootstrap5.php": "/resources/views/vendor/jsvalidation/bootstrap5.php",
+    "/resources/views/vendor/jsvalidation/uikit.php": "/resources/views/vendor/jsvalidation/uikit.php"
 }

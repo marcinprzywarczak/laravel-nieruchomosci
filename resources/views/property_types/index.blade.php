@@ -16,7 +16,7 @@
             {{ __('translations.property_types.label.create') }}
             </a>
         </div>
-        <div id="no-more-tables">
+        <div id="mobile-tables">
             <table class="table" style="width: 100%;">
                 <thead>
                     <tr>
@@ -33,17 +33,20 @@
                 <tbody>
                     @foreach ($property_types as $property_type )
                         <tr>
-                            <td>{{ $property_type->id }}</td>
-                            <td>{{ $property_type->name }}</td>
-                            <td>
+                            <td data-title="#">{{ $property_type->id }}</td>
+                            <td data-title="{{ __('translations.property_types.attribute.name') }}">{{ $property_type->name }}</td>
+                            <td data-title="{{ __('translations.property_types.attribute.owner') }}"
+                            style="min-height: 20px">
                                 @if (isset($property_type->owner))
                                     {{ $property_type->owner->name }}
                                 @endif
                                 </td>
-                            <td>{{ $property_type->created_at }}</td>
-                            <td>{{ $property_type->updated_at }}</td>
-                            <td>{{ $property_type->deleted_at }}</td>
-                            <td>{{ $property_type->properties_count }}</td>
+                            <td data-title="{{ __('translations.attribute.created_at') }}">{{ $property_type->created_at }}</td>
+                            <td data-title="{{ __('translations.attribute.updated_at') }}">{{ $property_type->updated_at }}</td>
+                            <td data-title="{{ __('translations.attribute.deleted_at') }}" style="min-height: 20px">
+                                {{ $property_type->deleted_at }}</td>
+                            <td data-title="{{ __('translations.property_types.attribute.count_properties') }}"
+                            style="min-height: 20px">{{ $property_type->properties_count }}</td>
                             <td>
                                 <div class="btn-group" role="group" aria-label="action buttons">
                                     @can('update', $property_type)

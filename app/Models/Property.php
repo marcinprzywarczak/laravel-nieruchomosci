@@ -45,4 +45,9 @@ class Property extends Model
     {
         return $this->hasOne(Offer::class)->ofMany('start_date', 'max');
     }
+
+    public function owner()
+    {
+        return $this->belongsTo(User::class, 'created_by');
+    }
 }

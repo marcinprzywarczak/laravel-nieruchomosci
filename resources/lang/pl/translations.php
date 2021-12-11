@@ -85,6 +85,7 @@ return[
             'number_of_floor' => 'liczba pięter',
             'description' => 'opis',
             'property_type' => 'typ nieruchomości',
+            'owner' => 'właściciel'
         ],
         'flashes' =>
         [

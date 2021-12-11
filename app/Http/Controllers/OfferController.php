@@ -70,5 +70,64 @@ class OfferController extends Controller
             ]));
     }
 
+    public function edit(Offer $offer)
+    {
+        $edit = true;
+        $offer_statuses = OfferStatus::orderBy('name')->get();
+        $properties = Property::orderBy('id')->get();
+        return view(
+            'offers.create',
+            compact('offer', 'edit', 'properties', 'offer_statuses')
+            
+        );
+    }
+
+    public function edit_offer(Property $property, Offer $offer )
+    {
+        $edit = true;
+        $offer_statuses = OfferStatus::orderBy('name')->get();
+        return view(
+            'offers.create',
+            compact('offer', 'edit', 'property', 'offer_statuses')
+            
+        );
+    }
+
+    public function update(OfferRequest $request, Offer $offer)
+    {
+        //dd($request->all());
+        $offer->fill(
+            $request->all()
+        )->save();
+        return redirect()->route('properties.index')
+            ->with(
+                'success',
+                __($offer->wasChanged()
+                    ? 'translations.offers.flashes.success.updated'
+                    : 'translations.offers.flashes.success.nothing-changed',
+                    [
+                        'title' => $offer->title
+                    ]
+                    )
+                    );
+    }
+    public function update_offer(OfferRequest $request,Property $property, Offer $offer)
+    {
+        //dd($request->all());
+        $offer->fill(
+            $request->all()
+        )->save();
+        return redirect()->route('properties.offers', $property)
+            ->with(
+                'success',
+                __($offer->wasChanged()
+                    ? 'translations.offers.flashes.success.updated'
+                    : 'translations.offers.flashes.success.nothing-changed',
+                    [
+                        'title' => $offer->title
+                    ]
+                    )
+                    );
+    }
 
 }

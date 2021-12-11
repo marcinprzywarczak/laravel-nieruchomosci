@@ -54,7 +54,32 @@
                             <td>{{ $offer->created_at }}</td>
                             <td>{{ $offer->updated_at }}</td>
                             <td>{{ $offer->deleted_at }}</td>
-                            <td></td>
+                            <td>
+                                @if ($offer->deleted_at === null)
+                                    @can('offers.store')
+                                    @if (isset($property))
+                                        <x-datatables.action-link class="btn btn-primary"
+                                            url="{{ route('properties.edit_offer', [$property, $offer]) }}" 
+                                            title="{{ __('translations.offers.label.edit')}}">
+                                            <i class="bi-pencil"></i>
+                                        </x-action-link>
+                                        
+                                    @else
+                                        <x-datatables.action-link class="btn btn-primary"
+                                            url="{{ route('offers.edit', $offer) }}" 
+                                            title="{{ __('translations.offers.label.edit')}}">
+                                            <i class="bi-pencil"></i>
+                                        </x-action-link>
+                                    @endif
+                                    
+                                    
+                                @endcan
+                                @endif
+                                <div class="btn-group" role="group" aria-label="action buttons">
+                                
+                                
+                                </div>
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>

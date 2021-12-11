@@ -13,15 +13,33 @@
         <h1>{{ __('translations.offers.title') }}</h1>
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">{{ __('translations.offers.label.create') }}</h5>
+                <h5 class="card-title">
+                    @if (isset($edit) && $edit === true)
+                    {{ __('translations.offers.label.edit') }}
+                    @else
+                    {{ __('translations.offers.label.create') }}
+                    @endif
+                   </h5>
                 <form id="offers-form" method="POST"
                     action="
                             @if (isset($property))
-                                {{ route('properties.store_offer', $property) }}
+                                @if (isset($edit) && $edit === true)
+                                    {{ route('properties.update_offer', [$property, $offer]) }}
+                                @else
+                                    {{ route('properties.store_offer', $property) }}
+                                @endif
                             @else
-                                {{ route('offers.store') }}
+                                @if (isset($edit) && $edit === true)
+                                    {{ route('offers.update', $offer) }}
+                                @else
+                                    {{ route('offers.store') }}
+                                @endif
+                                
                             @endif
                             ">
+                    @if (isset($edit) && $edit === true)
+                        @method('PATCH')
+                    @endif
                     @csrf
 
                     <div class="row mb-3">
@@ -42,6 +60,9 @@
                                 <option disabled selected>{{ __('translations.labels.select2-placeholder') }}</option>
                                 @foreach ($properties as $propertyy )
                                 @if (($propertyy->id) == old('property_id'))
+                                    <option value="{{ $propertyy->id }}" selected>id: {{ $propertyy->id }}, {{ __('translations.properties.attribute.address') }}: {{ $propertyy->address }},
+                                        {{ __('translations.properties.attribute.property_type') }}: {{ $propertyy->property_type->name }}</option>
+                                @elseif (isset($offer) && (($offer->property_id) === $propertyy->id))
                                     <option value="{{ $propertyy->id }}" selected>id: {{ $propertyy->id }}, {{ __('translations.properties.attribute.address') }}: {{ $propertyy->address }},
                                         {{ __('translations.properties.attribute.property_type') }}: {{ $propertyy->property_type->name }}</option>
                                 @else
@@ -73,7 +94,9 @@
                             aria-describedby="offer-offer_status-error">
                                 <option selected disabled>{{ __('translations.labels.select2-placeholder') }}</option>
                                 @foreach ($offer_statuses as $offer_status )
-                                @if (($offer_status->id) == old('offer_status_id'))
+                                @if ((isset($offer)) && (($offer->offer_status_id) === ($offer_status->id)))
+                                    <option value="{{ $offer_status->id }}" selected>{{ $offer_status->name }}</option>
+                                @elseif (($offer_status->id) === old('offer_status_id'))
                                     <option value="{{ $offer_status->id }}" selected>{{ $offer_status->name }}</option>
                                 @else
                                     <option value="{{ $offer_status->id }}">{{ $offer_status->name }}</option>
@@ -98,7 +121,13 @@
                         </label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control @error('title') is-invalid @enderror" name="title"
-                            id="offer-title" value="{{ old('title') }}">
+                            id="offer-title" 
+                            @if (isset($offer))
+                                value = "{{ $offer->title }}"
+                            @else
+                                value="{{ old('title') }}"
+                            @endif
+                            >
                             @error('title')
                                 <span class="invalid-feedback" role="alert">
                                     {{ $message }}
@@ -113,7 +142,13 @@
                         </label>
                         <div class="col-sm-10">
                             <input type="date" class="form-control @error('start_date') is-invalid @enderror" name="start_date"
-                            id="offer-start_date" value="{{ old('start_date') }}">
+                            id="offer-start_date"
+                            @if (isset($offer))
+                                value = "{{ $offer->start_date }}"
+                            @else
+                                value="{{ old('start_date') }}"
+                            @endif
+                            >
                             @error('start_date')
                                 <span class="invalid-feedback" role="alert">
                                     {{ $message }}
@@ -128,7 +163,13 @@
                         </label>
                         <div class="col-sm-10">
                             <input type="date" class="form-control @error('end_date') is-invalid @enderror" name="end_date"
-                            id="offer-end_date" value="{{ old('end_date') }}">
+                            id="offer-end_date" 
+                            @if (isset($offer))
+                                value = "{{ $offer->end_date }}"
+                            @else
+                                value="{{ old('end_date') }}"
+                            @endif
+                            >
                             @error('end_date')
                                 <span class="invalid-feedback" role="alert">
                                     {{ $message }}
@@ -143,7 +184,13 @@
                         </label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control @error('price') is-invalid @enderror" name="price"
-                            id="offer-price" value="{{ old('price') }}">
+                            id="offer-price" 
+                            @if (isset($offer))
+                                value = "{{ $offer->price }}"
+                            @else
+                                value="{{ old('price') }}"
+                            @endif
+                            >
                             @error('price')
                                 <span class="invalid-feedback" role="alert">
                                     {{ $message }}
@@ -158,7 +205,7 @@
                         </label>
                         <div class="col-sm-10">
                             <textarea class="form-control @error('comment') is-invalid @enderror" name="comment"
-                            id="offer-comment" rows="3">{{ old('comment') }}</textarea>
+                            id="offer-comment" rows="3">@if (isset($offer)){{ $offer->comment }}@else{{ old('comment') }}@endif</textarea>
                             @error('comment')
                                 <span class="invalid-feedback" role="alert">
                                     {{ $message }}
@@ -182,7 +229,11 @@
                                 {{ __('translations.buttons.cancel') }}
                             </a>
                             <button type="submit" class="btn btn-primary">
-                                {{ __('translations.buttons.store') }}
+                                @if (isset($edit) && $edit===true)
+                                    {{ __('translations.buttons.update') }}
+                                @else
+                                    {{ __('translations.buttons.store') }}
+                                @endif
                             </button>
                         </div>
                     </div>

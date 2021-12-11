@@ -120,6 +120,18 @@ Route::middleware(['auth', 'verified'])->group(function(){
             ->where('property', '[0-9]+')
             ->name('update')
             ->middleware(['permission:properties.store']);
+
+        Route::get('{property}/{offer}/edit_offer', [OfferController::class, 'edit_offer'])
+            ->where('property', '[0-9]+')
+            ->where('offer', '[0-9]+')
+            ->name('edit_offer')
+            ->middleware(['permission:offers.store']);
+            
+        Route::patch('{property}/{offer}', [OfferController::class, 'update_offer'])
+            ->where('property', '[0-9]+')
+            ->where('offer', '[0-9]+')
+            ->name('update_offer')
+            ->middleware(['permission:offers.store']);
     });
     Route::name('offers.')->prefix('offers')->group(function()
     {
@@ -135,6 +147,16 @@ Route::middleware(['auth', 'verified'])->group(function(){
             ->middleware(['permission:offers.store']);
         Route::post('', [OfferController::class, 'store'])
             ->name('store')
+            ->middleware(['permission:offers.store']);
+
+        Route::get('{offer}/edit', [OfferController::class, 'edit'])
+            ->where('offer', '[0-9]+')
+            ->name('edit')
+            ->middleware(['permission:offers.store']);
+
+        Route::patch('{offer}', [OfferController::class, 'update'])
+            ->where('offer', '[0-9]+')
+            ->name('update')
             ->middleware(['permission:offers.store']);
     });
 });

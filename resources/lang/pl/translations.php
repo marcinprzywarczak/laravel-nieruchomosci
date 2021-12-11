@@ -101,7 +101,8 @@ return[
         'title' => 'Oferty',
         'label' =>
         [
-            'create' => 'Dodanie nowej oferty'
+            'create' => 'Dodanie nowej oferty',
+            'edit' => 'Edycja danych oferty'
         ],
         'attribute' =>
         [
@@ -118,6 +119,8 @@ return[
             'success' =>
             [
                 'stored' => 'Dodano ofertę o id :id dla nieruchomości o id :property_id',
+                'updated' => 'Zaktualizowano ofertę o tytule :title',
+                'nothing-changed' => 'Dane oferty o tytule :title nie zmieniły się'
             ]
         ]
     ]

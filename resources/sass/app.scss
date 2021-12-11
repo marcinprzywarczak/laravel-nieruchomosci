@@ -11,23 +11,6 @@
 @import 'bootstrap-icons/font/bootstrap-icons.css';
 
 
-.btn-group > form > .btn:not(:last-child):not(.dropdown-toggle), .btn-group > .btn-group:not(:last-child) > form > .btn
-{
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-}
-
-.btn-group > form > .btn:not(:first-child), .btn-group > .btn-group:not(:first-child) > form > .btn 
-{
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-}
-
-.btn-group > form > .btn:not(:first-child), .btn-group > .btn-group:not(:first-child)
-{
-    margin-left: -1px;
-}
-
 body {
     padding-top: 4.5rem;
 }

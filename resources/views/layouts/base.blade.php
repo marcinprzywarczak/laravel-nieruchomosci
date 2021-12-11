@@ -11,7 +11,8 @@
         <title>Bootstrap v5.0</title>
         <script>
             window.config = {
-                locale: "{{ config('app.locale') }}"
+                locale: "{{ config('app.locale') }}", 
+                host: "{{ request()->getSchemeAndHttpHost() }}"
             }
         </script>
         <link rel="stylesheet" href="{{asset('css/app.css')}}">

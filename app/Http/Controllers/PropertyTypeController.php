@@ -72,4 +72,24 @@ class PropertyTypeController extends Controller
                     )
                     );
     }
+
+    public function destroy(PropertyType $property_type)
+    {
+        $property_type->delete();
+        return redirect()->route('property_types.index')
+            ->with('success', __('translations.property_types.flashes.success.destroy' , [
+                'name' => $property_type->name
+            ]));
+
+    }
+
+    public function restore(int $id)
+    {
+        $property_type = PropertyType::onlyTrashed()->findOrFail($id);
+        $property_type->restore();
+        return redirect()->route('property_types.index')
+        ->with('success', __('translations.property_types.flashes.success.restore' , [
+            'name' => $property_type->name
+        ]));
+    }
 }

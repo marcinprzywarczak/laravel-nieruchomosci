@@ -24,5 +24,7 @@ mix.js('resources/js/app.js', 'public/js')
     .sass('resources/sass/properties.scss', 'public/css')
     .sass('resources/sass/offers.scss', 'public/css')
     .copy('resources/views/vendor/datatables/i18n/pl.json', 'public/vendor/datatables/i18n')
+    .copy('vendor/proengsoft/laravel-jsvalidation/resources/views', 'resources/views/vendor/jsvalidation')
+    .copy('vendor/proengsoft/laravel-jsvalidation/public', 'resources/js/vendor/jsvalidation')
     .sourceMaps()
     .extract();

@@ -35,12 +35,14 @@ class PropertyTypePolicy
 
     public function delete(User $user, PropertyType $property_type)
     {
-        return $user->can('property_types.store') && $user->id === $property_type->created_by;
+        return $user->can('property_types.store') && $user->id === $property_type->created_by
+        && $property_type->deleted_at === null;
     }
 
     public function restore(User $user, PropertyType $property_type)
     {
-        return $user->can('property_types.store') && $user->id === $property_type->created_by;
+        return $user->can('property_types.store') && $user->id === $property_type->created_by
+        && $property_type->deleted_at !== null;
     }
 
     public function forceDelete(User $user, PropertyType $property_type)

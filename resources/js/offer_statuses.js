@@ -12,3 +12,5 @@ $(function()
         
     );
 });
+
+require('./vendor/jsvalidation/js/jsvalidation');

@@ -5,7 +5,9 @@
     </x-slot>
     <x-slot name="scripts">
         <script src="{{ asset('js/offer_statuses.js') }}"></script>
-
+        {!! 
+            JsValidator::formRequest('App\Http\Requests\OfferStatuses\OfferStatusRequest')
+         !!}
     </x-slot>
 
 

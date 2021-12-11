@@ -39,4 +39,6 @@ $(function ()
             stateDuration: 604800
         }
     )
-})
+});
+
+require('./vendor/jsvalidation/js/jsvalidation');

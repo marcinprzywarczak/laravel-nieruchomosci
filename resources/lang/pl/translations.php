@@ -31,7 +31,8 @@ return[
         [
             'name' => 'nazwa',
             'address' => 'adres',
-            'count_properties' => 'ilość nieruchomości'
+            'count_properties' => 'ilość nieruchomości',
+            'owner' => 'właściciel'
         ],
         'flashes' =>
         [

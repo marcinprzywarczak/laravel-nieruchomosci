@@ -34,26 +34,21 @@ require __DIR__.'/auth.php';
 Route::middleware(['auth', 'verified'])->group(function(){
     Route::name('property_types.')->prefix('property_types')->group(function(){
         Route::get('', [PropertyTypeController::class, 'index'])
-            ->name('index')
-            ->middleware(['permission:property_types.index']);
+            ->name('index');
 
         Route::get('create', [PropertyTypeController::class, 'create'])
-            ->name('create')
-            ->middleware(['permission:property_types.store']);
+            ->name('create');
 
         Route::post('', [PropertyTypeController::class, 'store'])
-            ->name('store')
-            ->middleware(['permission:property_types.store']);
+            ->name('store');
 
         Route::get('{property_type}/edit', [PropertyTypeController::class, 'edit'])
             ->where('property_type', '[0-9]+')
-            ->name('edit')
-            ->middleware(['permission:property_types.store']);
+            ->name('edit');
 
         Route::patch('{property_type}', [PropertyTypeController::class, 'update'])
             ->where('property_type', '[0-9]+')
-            ->name('update')
-            ->middleware(['permission:property_types.store']);
+            ->name('update');
     });
 
     Route::name('offer_statuses.')->prefix('offer_statuses')->group(function(){

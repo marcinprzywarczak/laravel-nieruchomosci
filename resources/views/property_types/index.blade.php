@@ -22,6 +22,7 @@
                     <tr>
                         <th>#</th>
                         <th>{{ __('translations.property_types.attribute.name') }}</th>
+                        <th>{{ __('translations.property_types.attribute.owner') }}</th>
                         <th>{{ __('translations.attribute.created_at') }}</th>
                         <th>{{ __('translations.attribute.updated_at') }}</th>
                         <th>{{ __('translations.attribute.deleted_at') }}</th>
@@ -34,13 +35,18 @@
                         <tr>
                             <td>{{ $property_type->id }}</td>
                             <td>{{ $property_type->name }}</td>
+                            <td>
+                                @if (isset($property_type->owner))
+                                    {{ $property_type->owner->name }}
+                                @endif
+                                </td>
                             <td>{{ $property_type->created_at }}</td>
                             <td>{{ $property_type->updated_at }}</td>
                             <td>{{ $property_type->deleted_at }}</td>
                             <td>{{ $property_type->properties_count }}</td>
                             <td>
                                 <div class="btn-group" role="group" aria-label="action buttons">
-                                    @can('property_types.store')
+                                    @can('update', $property_type)
                                         <x-datatables.action-link class="btn btn-primary"
                                             url="{{ route('property_types.edit', $property_type) }}"
                                             title="{{ __('translations.property_types.label.edit')}}">

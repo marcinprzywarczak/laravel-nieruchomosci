@@ -4,16 +4,22 @@ namespace App\Http\Controllers;
 
 use App\Models\PropertyType;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\PropertyTypes\PropertyTypeRequest;
 
 class PropertyTypeController extends Controller
 {
+    public function __construct()
+    {
+        $this->authorizeResource(PropertyType::class, 'property_type');
+    }
     public function index()
     {
         return view(
             'property_types.index',
             [
                 'property_types' => PropertyType::withTrashed()
+                    ->with(['owner'])
                     ->withCount('properties')->get()
             ]
             );
@@ -26,7 +32,11 @@ class PropertyTypeController extends Controller
     public function store(PropertyTypeRequest $request)
     {
         $property_type = PropertyType::create(
-            $request->all()
+            $request->merge(
+                [
+                    'created_by' => Auth::id()
+                ]
+            )->all()
         );      
         return redirect()->route('property_types.index')
             ->with('success', __('translations.property_types.flashes.success.stored', [

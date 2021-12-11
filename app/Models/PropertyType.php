@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\User;
 use App\Models\Property;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -14,11 +15,17 @@ class PropertyType extends Model
 
     protected $fillable =
     [
-        'name'
+        'name',
+        'created_by'
     ];
 
     public function properties()
     {
         return $this->hasMany(Property::class);
+    }
+
+    public function owner()
+    {
+        return $this->belongsTo(User::class,'created_by');
     }
 }

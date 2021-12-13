@@ -49,17 +49,16 @@
                             {{ __('translations.offers.attribute.property') }}
                         </label>
                         <div class="col-sm-10">
-                            <select class="form-select @error('property_id') is-invalid @enderror" name="property_id"
+                            <select class="form-select select2 @error('property_id') is-invalid @enderror" name="property_id"
                             id="offer-property"
-                            placeholder="{{ __('translations.labels.select2-placeholder') }}"
+                            data-placeholder="{{ __('translations.labels.select2-placeholder') }}"
                             aria-describedby="offer-property-error">
-                                
+                                <option></option>
                                 @if (isset($property))
                                     <option value="{{ $property->id }}" selected>id: {{ $property->id }}, {{ __('translations.properties.attribute.address') }}: {{ $property->address }},
                                         {{ __('translations.properties.attribute.property_type') }}: {{ $property->property_type->name }}</option>
                                 @else
                                     
-                                <option disabled selected>{{ __('translations.labels.select2-placeholder') }}</option>
                                 @foreach ($properties as $propertyy )
                                 @if (($propertyy->id) == old('property_id'))
                                     <option value="{{ $propertyy->id }}" selected>id: {{ $propertyy->id }}, {{ __('translations.properties.attribute.address') }}: {{ $propertyy->address }},
@@ -90,11 +89,11 @@
                             {{ __('translations.offers.attribute.offer_status') }}
                         </label>
                         <div class="col-sm-10">
-                            <select class="form-select @error('offer_status_id') is-invalid @enderror" name="offer_status_id"
+                            <select class="form-select select2 @error('offer_status_id') is-invalid @enderror" name="offer_status_id"
                             id="offer-offer_status"
-                            placeholder="{{ __('translations.labels.select2-placeholder') }}"
+                            data-placeholder="{{ __('translations.labels.select2-placeholder') }}"
                             aria-describedby="offer-offer_status-error">
-                                <option selected disabled>{{ __('translations.labels.select2-placeholder') }}</option>
+                                <option></option>
                                 @foreach ($offer_statuses as $offer_status )
                                 @if ((isset($offer)) && (($offer->offer_status_id) === ($offer_status->id)))
                                     <option value="{{ $offer_status->id }}" selected>{{ $offer_status->name }}</option>

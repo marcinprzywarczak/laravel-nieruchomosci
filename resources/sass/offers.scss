@@ -1,1 +1,6 @@
-@import '~datatables.net-bs5/css/dataTables.bootstrap5.css'
+@import '~datatables.net-bs5/css/dataTables.bootstrap5.css';
+
+@import './button_group_corner.scss';
+
+@import "~select2/src/scss/core";
+@import "~select2-bootstrap-5-theme/src/select2-bootstrap-5-theme";

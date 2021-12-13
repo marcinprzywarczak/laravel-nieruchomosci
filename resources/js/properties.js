@@ -4,6 +4,9 @@ const { registerConfirmAction } = require('./confirm_action');
 
 const {tooltipActivation} = require('./tooltip_activation');
 
+require('select2');
+$.fn.select2.amd.define('select2/i18n/pl', [], require("select2/src/js/select2/i18n/pl"));
+
 $(function ()
 {
     $('table').DataTable(
@@ -50,6 +53,12 @@ $(function ()
             stateSave: true,
             stateDuration: 604800
         }
+    );
+    $('.select2').select2({
+        theme: 'bootstrap-5',
+        language: config.locale,
+        allowClear: true
+    }
     )
 });
 

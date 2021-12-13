@@ -40,13 +40,13 @@
                             {{ __('translations.properties.attribute.property_type') }}
                         </label>
                         <div class="col-sm-10">
-                            <select class="form-select @error('property_type_id') is-invalid @enderror" name="property_type_id"
+                            <select class="form-select select2 @error('property_type_id') is-invalid @enderror" name="property_type_id"
                             id="property-property_type"
-                            placeholder="{{ __('translations.labels.select2-placeholder') }}"
+                            data-placeholder="{{ __('translations.labels.select2-placeholder') }}"
                             aria-describedby="property-property_type-error">
-                                <option selected disabled>{{ __('translations.labels.select2-placeholder') }}</option>
+                                <option></option>
                                 @foreach ($property_types as $property_type )
-                                @if (($property_type->id) == old('property_type_id'))
+                                @if ((old('property_type_id')) && (($property_type->id) == old('property_type_id')))
                                     <option value="{{ $property_type->id }}" selected>{{ $property_type->name }}</option>
                                 @elseif ((isset($property)) && (($property_type->id) === ($property->property_type_id)))
                                     <option value="{{ $property_type->id }}" selected>{{ $property_type->name }}</option>

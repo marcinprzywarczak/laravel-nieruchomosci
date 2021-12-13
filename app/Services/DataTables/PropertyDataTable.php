@@ -75,8 +75,10 @@ class PropertyDataTable extends DataTable
     private function getActionButtons(Property $property): string
     {
         $buttons = '<div class="btn-group" role="group" aria-label="action buttons">';
-        $buttons .= $this->getEditButton($property);
         $buttons .= $this->getOffersButton($property);
+        $buttons .= $this->getEditButton($property);
+        $buttons .= $this->getDestroyButton($property);
+        $buttons .= $this->getRestoreButton($property);
         $buttons .= '</div>';
         return $buttons;
     }
@@ -103,6 +105,56 @@ class PropertyDataTable extends DataTable
                 'url' => route('properties.offers', $property),
                 'title' =>  __('translations.properties.label.offers'),
                 'class' => 'btn btn-secondary'
+            ])
+        ])->render();
+    }
+
+    private function getDestroyButton(Property $property): string
+    {
+        if(isset($property->deleted_at))
+        {
+            return '';
+        }
+        return view('components.datatables.confirm', [
+            'slot' => '<i class="bi bi-trash"></i>',
+            'attributes' => new ComponentAttributeBag([
+                'action' => route('properties.destroy', $property),
+                'method' => 'DELETE',
+                'confirm-text' => __('translations.buttons.yes'),
+                'confirm-class' => 'btn btn-danger me-2',
+                'cancel-text' => __('translations.buttons.no'),
+                'cancel-class' => 'btn btn-secondary ms-2',
+                'icon' => 'question',
+                'message' => __('translations.properties.label.destroy-question' ,[
+                    'address' => $property->address
+                ]),
+                'button-class' => 'btn btn-danger',
+                'button-title' => __('translations.properties.label.destroy')
+            ])
+        ])->render();
+    }
+
+    private function getRestoreButton(Property $property): string
+    {
+        if(!isset($property->deleted_at))
+        {
+            return '';
+        }
+        return view('components.datatables.confirm', [
+            'slot' => '<i class="bi bi-trash"></i>',
+            'attributes' => new ComponentAttributeBag([
+                'action' => route('properties.restore', $property),
+                'method' => 'PUT',
+                'confirm-text' => __('translations.buttons.yes'),
+                'confirm-class' => 'btn btn-success me-2',
+                'cancel-text' => __('translations.buttons.no'),
+                'cancel-class' => 'btn btn-secondary ms-2',
+                'icon' => 'question',
+                'message' => __('translations.properties.label.restore-question' ,[
+                    'address' => $property->address
+                ]),
+                'button-class' => 'btn btn-success',
+                'button-title' => __('translations.properties.label.restore')
             ])
         ])->render();
     }

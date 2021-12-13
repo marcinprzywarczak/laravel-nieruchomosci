@@ -85,6 +85,10 @@ class PropertyDataTable extends DataTable
 
     private function getEditButton(Property $property): string
     {
+        if(isset($property->deleted_at))
+        {
+            return '';
+        }
         
         return view('components.datatables.action-link', [
             'slot' => '<i class="bi-pencil"></i>',

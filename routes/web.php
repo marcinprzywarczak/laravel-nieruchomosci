@@ -135,6 +135,15 @@ Route::middleware(['auth', 'verified'])->group(function(){
             ->where('offer', '[0-9]+')
             ->name('update_offer')
             ->middleware(['permission:offers.store']);
+
+
+        Route::delete('{property}', [PropertyController::class, 'destroy'])
+            ->where('property', '[0-9]+')
+            ->name('destroy');
+
+        Route::put('{id}/restore', [PropertyController::class, 'restore'])
+            ->where('id', '[0-9]+')
+            ->name('restore');
     });
     Route::name('offers.')->prefix('offers')->group(function()
     {

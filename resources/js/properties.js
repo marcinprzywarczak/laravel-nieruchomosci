@@ -1,4 +1,8 @@
 require('datatables.net-bs5');
+const { registerConfirmAction } = require('./confirm_action');
+
+
+const {tooltipActivation} = require('./tooltip_activation');
 
 $(function ()
 {
@@ -27,6 +31,14 @@ $(function ()
                 {data: 'deleted_at', name: 'deleted_at'},
                 {data: 'action', name: 'action', orderable: false, searchable: false},
             ],
+            drawCallback: function (setting)
+            {
+                registerConfirmAction();
+                var table = document.getElementsByTagName('table')[0];
+                if(!_.isNil(table)){
+                    tooltipActivation(table);
+                }
+            },
             language: 
             {
                 "url": "vendor/datatables/i18n/" + config.locale + ".json"
@@ -42,3 +54,4 @@ $(function ()
 });
 
 require('./vendor/jsvalidation/js/jsvalidation');
+

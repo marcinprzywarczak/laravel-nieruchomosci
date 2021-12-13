@@ -7,7 +7,25 @@
                 errorClass: 'invalid-feedback',
 
                 errorPlacement: function (error, element) {
-                    error.insertAfter(element);
+                    let container = element.closest('div');
+                    if(container.length > 0)
+                    {
+                        container.append(error);
+                    }
+                    else
+                    {
+                        if(element.parent('.input-group').length 
+                            || element.prop('type') === 'checkbox'
+                            || element.prop('type') === 'radio')
+                            
+                            {
+                                error.insertAfter(element.parent());
+                            }
+                            else
+                            {
+                                error.insertAfter(element);
+                            }
+                    }
                 },
                 highlight: function (element) {
                     $(element).removeClass('is-valid').addClass('is-invalid'); // add the Bootstrap error class to the control group

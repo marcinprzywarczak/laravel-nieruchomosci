@@ -83,7 +83,11 @@ return[
         [
             'create' => 'Dodanie nowej nieruchomości',
             'offers' => 'Wyświetl oferty dla tej nieruchomości',
-            'edit' => 'Edycja danych nieruchomości'
+            'edit' => 'Edycja danych nieruchomości',
+            'destroy' => 'Usunięcie nieruchomości',
+            'destroy-question' => 'Czy na pewno usunąc nieruchomośc o adresie :address?',
+            'restore' => 'Anulowanie usunięcia nieruchomości',
+            'restore-question' => 'Czy anulować usunięcie nieruchomości o adresie :address?',
         ],
         'attribute'=>
         [
@@ -102,7 +106,9 @@ return[
             [
                 'stored' => 'Dodano nieruchomość o id :id i adresie :address',
                 'updated' => 'Zaktualizowano nieruchomość o adresie :address',
-                'nothing-changed' => 'Dane nieruchomości o adresie :address nie zmieniły się'
+                'nothing-changed' => 'Dane nieruchomości o adresie :address nie zmieniły się',
+                'destroy' => 'Nieruchomość o adresie :address została usunięta',
+                'restore' => 'Usunięcie nieruchomości o adresie :address zostało anulowane',
             ]
         ]
     ],

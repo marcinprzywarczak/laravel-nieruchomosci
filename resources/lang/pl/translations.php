@@ -58,7 +58,11 @@ return[
         'label' =>
         [
             'create' => 'Dodanie nowego statusu oferty',
-            'edit' => 'Edycja danych statusu oferty'
+            'edit' => 'Edycja danych statusu oferty',
+            'destroy' => 'Usunięcie statusu oferty',
+            'destroy-question' => 'Czy na pewno usunąc status oferty :name?',
+            'restore' => 'Anulowanie usunięcia statusu oferty',
+            'restore-question' => 'Czy anulować usunięcie statusu oferty :name?',
         ],
         'attribute'=>
         [
@@ -71,7 +75,9 @@ return[
             [
                 'stored' => 'Dodano status oferty :name',
                 'updated' => 'Zaktualizowano status oferty :name',
-                'nothing-changed' => 'Dane statusu oferty :name nie zmieniły się'
+                'nothing-changed' => 'Dane statusu oferty :name nie zmieniły się',
+                'destroy' => 'Status oferty :name został usunięty',
+                'restore' => 'Usunięcie statusu oferty :name zostało anulowane',
             ]
         ]
 

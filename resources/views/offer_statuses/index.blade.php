@@ -41,11 +41,33 @@
                             <td>
                                 <div class="btn-group" role="group" aria-label="action buttons">
                                 @can('offer_statuses.store')
+                                @if ($offer_status->deleted_at === null)
                                     <x-datatables.action-link class="btn btn-primary"
                                         url="{{ route('offer_statuses.edit', $offer_status) }}"
                                         title="{{ __('translations.offer_statuses.label.edit')}}">
                                         <i class="bi-pencil"></i>
                                     </x-action-link>
+                                    <x-confirm
+                                            :action="route('offer_statuses.destroy', $offer_status)" method="DELETE"
+                                            :confirm-text="__('translations.buttons.yes')" confirm-class="btn btn-danger me-2"
+                                            :cancel-text="__('translations.buttons.no')" cancel-class="btn btn-secondary ms-2"
+                                            icon="question"
+                                            :message="__('translations.offer_statuses.label.destroy-question', ['name' => $offer_status->name] )" 
+                                            button-class="btn btn-danger" :button-title="__('translations.offer_statuses.label.destroy')">
+                                            <i class="bi bi-trash"></i>
+                                        </x-confirm>
+                                @else
+                                    <x-confirm
+                                        :action="route('offer_statuses.restore', $offer_status)" method="PUT"
+                                        :confirm-text="__('translations.buttons.yes')" confirm-class="btn btn-success me-2"
+                                        :cancel-text="__('translations.buttons.no')" cancel-class="btn btn-secondary ms-2"
+                                        icon="question"
+                                        :message="__('translations.offer_statuses.label.restore-question', ['name' => $offer_status->name] )" 
+                                        button-class="btn btn-success" :button-title="__('translations.offer_statuses.label.restore')">
+                                        <i class="bi bi-trash"></i>
+                                    </x-confirm>   
+                                @endif
+                                    
                                 @endcan
                                 </div>
                             </td>

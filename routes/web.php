@@ -81,6 +81,14 @@ Route::middleware(['auth', 'verified'])->group(function(){
             ->where('offer_status', '[0-9]+')
             ->name('update')
             ->middleware(['permission:offer_statuses.store']);
+
+        Route::delete('{offer_status}', [OfferStatusController::class, 'destroy'])
+            ->where('offer_status', '[0-9]+')
+            ->name('destroy');
+
+        Route::put('{id}/restore', [OfferStatusController::class, 'restore'])
+            ->where('id', '[0-9]+')
+            ->name('restore');
     });
 
     Route::name('properties.')->prefix('properties')->group(function()

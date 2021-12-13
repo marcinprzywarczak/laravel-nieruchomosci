@@ -65,4 +65,25 @@ class OfferStatusController extends Controller
                     )
                     );
     }
+
+
+    public function destroy(OfferStatus $offer_status)
+    {
+        $offer_status->delete();
+        return redirect()->route('offer_statuses.index')
+            ->with('success', __('translations.offer_statuses.flashes.success.destroy' , [
+                'name' => $offer_status->name
+            ]));
+
+    }
+
+    public function restore(int $id)
+    {
+        $offer_status = OfferStatus::onlyTrashed()->findOrFail($id);
+        $offer_status->restore();
+        return redirect()->route('offer_statuses.index')
+        ->with('success', __('translations.offer_statuses.flashes.success.restore' , [
+            'name' => $offer_status->name
+        ]));
+    }
 }

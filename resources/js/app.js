@@ -5,6 +5,8 @@ window._ = require('lodash');
 window.$ = window.jQuery = require('jquery');
 window.bootstrap = require('bootstrap');
 
+const {tooltipActivation} = require('./tooltip_activation');
+
 var toastElList = [].slice.call(document.querySelectorAll('.toast'));
 
 var toastList = toastElList.map(function (toastEl)
@@ -13,10 +15,7 @@ var toastList = toastElList.map(function (toastEl)
 });
 toastList.forEach(toast => toast.show());
 
+tooltipActivation(document);
 
-var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-tooltipTriggerList.map(function (tooltipTriggerEl){
-    return new bootstrap.Tooltip(tooltipTriggerEl);
-});
 
 window.Swal = require('sweetalert2');

@@ -30,7 +30,8 @@ class PropertyTypePolicy
     
     public function update(User $user, PropertyType $property_type)
     {
-        return $user->can('property_types.store') && $user->id === $property_type->created_by;
+        return $user->can('property_types.store') && $user->id === $property_type->created_by
+        && $property_type->deleted_at === null;
     }
 
     public function delete(User $user, PropertyType $property_type)

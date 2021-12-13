@@ -93,4 +93,24 @@ class PropertyController extends Controller
                     )
                     );
     }
+
+
+    public function destroy(Property $property)
+    {
+        $property->delete();
+        return redirect()->route('properties.index')
+            ->with('success', __('translations.properties.flashes.success.destroy', [
+                'address' => $property->address
+            ]));
+    }
+
+    public function restore(int $id)
+    {
+        $property = Property::onlyTrashed()->findOrFail($id);
+        $property->restore();
+        return redirect()->route('properties.index')
+            ->with('success', __('translations.properties.flashes.success.restore', [
+                'address' => $property->address
+            ]));
+    }
 }

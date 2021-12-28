@@ -100,7 +100,7 @@ Route::middleware(['auth', 'verified'])->group(function(){
             ->middleware(['permission:properties.index']);
         Route::post('/datatable', [PropertyController::class, 'dataTable'])
             ->name('datatable')
-            ->middleware(['permission:properties.index']);
+            ->middleware(['only_ajax_request', 'permission:properties.index']);
 
 
         Route::get('{property}/offers', [PropertyController::class, 'offers'])

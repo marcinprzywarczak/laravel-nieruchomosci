@@ -89,21 +89,20 @@
                             {{ __('translations.offers.attribute.offer_status') }}
                         </label>
                         <div class="col-sm-10">
-                            <select class="form-select select2 @error('offer_status_id') is-invalid @enderror" name="offer_status_id"
+                            <select class="form-select @error('offer_status_id') is-invalid @enderror" name="offer_status_id"
                             id="offer-offer_status"
                             data-placeholder="{{ __('translations.labels.select2-placeholder') }}"
                             aria-describedby="offer-offer_status-error">
                                 <option></option>
-                                @foreach ($offer_statuses as $offer_status )
-                                @if ((isset($offer)) && (($offer->offer_status_id) === ($offer_status->id)))
-                                    <option value="{{ $offer_status->id }}" selected>{{ $offer_status->name }}</option>
-                                @elseif (($offer_status->id) === old('offer_status_id'))
-                                    <option value="{{ $offer_status->id }}" selected>{{ $offer_status->name }}</option>
-                                @else
-                                    <option value="{{ $offer_status->id }}">{{ $offer_status->name }}</option>
+                                @if (isset($offer_status))
+                                    <option value="{{ $offer_status->id }}" selected>
+                                        {{ $offer_status->name }}
+                                    </option>
+                                @elseif (isset($offer))
+                                    <option value="{{ $offer->offer_status_id }}" selected>
+                                        {{ $offer->offer_status->name }}
+                                    </option>
                                 @endif
-                                    
-                                @endforeach
                                     
                                 
 

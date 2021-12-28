@@ -183,7 +183,9 @@ return [
         */
         Arcanedev\LogViewer\LogViewerServiceProvider::class,
 
-        App\Providers\PropertyTypeSearchServiceProvider::class
+        App\Providers\PropertyTypeSearchServiceProvider::class,
+
+        App\Providers\OfferStatusSearchServiceProvider::class
     ],
 
     /*
@@ -238,6 +240,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'PropertyTypeSearchService' => App\Facades\PropertyTypeSearchService::class,
+        'OfferStatusSearchService' => App\Facades\OfferStatusSearchService::class,
 
     ],
     'admin_role' => env('ADMIN_ROLE', 'admin'),

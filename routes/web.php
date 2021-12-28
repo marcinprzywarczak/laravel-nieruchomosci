@@ -68,6 +68,10 @@ Route::middleware(['auth', 'verified'])->group(function(){
             ->name('index')
             ->middleware(['permission:offer_statuses.index']);
 
+        Route::post('ajax', [OfferStatusController::class, 'ajax'])
+            ->name('ajax')
+            ->middleware(['permission:offer_statuses.store', 'only_ajax_request']);
+
         Route::get('create', [OfferStatusController::class, 'create'])
             ->name('create')
             ->middleware(['permission:offer_statuses.store']);
@@ -102,10 +106,15 @@ Route::middleware(['auth', 'verified'])->group(function(){
         Route::get('', [PropertyController::class, 'index'])
             ->name('index')
             ->middleware(['permission:properties.index']);
+
+
         Route::post('/datatable', [PropertyController::class, 'dataTable'])
             ->name('datatable')
             ->middleware(['only_ajax_request', 'permission:properties.index']);
 
+        Route::post('ajax', [PropertyController::class, 'ajax'])
+            ->name('ajax')
+            ->middleware(['permission:properties.store', 'only_ajax_request']);
 
         Route::get('{property}/offers', [PropertyController::class, 'offers'])
             ->where('property', '[0-9]+')

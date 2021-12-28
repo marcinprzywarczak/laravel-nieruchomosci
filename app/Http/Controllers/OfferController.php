@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Offer;
 use App\Models\Property;
 use App\Models\OfferStatus;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Offers\OfferRequest;
@@ -20,21 +21,21 @@ class OfferController extends Controller
             ]
             );
     }
-    public function create()
+    public function create(Request $request)
     {
         return view('offers.create', 
         [
-            'offer_statuses' => OfferStatus::orderBy('name')->get(),
+            'offer_status' => OfferStatus::find($request->old('offer_status_id')),
             'properties' => Property::orderBy('id')->get()
         ]);
     }
 
-    public function create_offer(Property $property)
+    public function create_offer(Property $property, Request $request)
     {
         return view(
             'offers.create',
             [
-                'offer_statuses' => OfferStatus::orderBy('name')->get(),
+                'offer_status' => OfferStatus::find($request->old('offer_status_id')),
                 'property' => $property
             ]
             );
@@ -70,25 +71,25 @@ class OfferController extends Controller
             ]));
     }
 
-    public function edit(Offer $offer)
+    public function edit(Offer $offer, Request $request)
     {
         $edit = true;
-        $offer_statuses = OfferStatus::orderBy('name')->get();
+        $offer_status = OfferStatus::find($request->old('offer_status_id'));
         $properties = Property::orderBy('id')->get();
         return view(
             'offers.create',
-            compact('offer', 'edit', 'properties', 'offer_statuses')
+            compact('offer', 'edit', 'properties', 'offer_status')
             
         );
     }
 
-    public function edit_offer(Property $property, Offer $offer )
+    public function edit_offer(Property $property, Offer $offer , Request $request)
     {
         $edit = true;
-        $offer_statuses = OfferStatus::orderBy('name')->get();
+        $offer_status = OfferStatus::find($request->old('offer_status_id'));
         return view(
             'offers.create',
-            compact('offer', 'edit', 'property', 'offer_statuses')
+            compact('offer', 'edit', 'property', 'offer_status')
             
         );
     }

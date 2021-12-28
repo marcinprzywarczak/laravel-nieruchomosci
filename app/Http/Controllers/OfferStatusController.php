@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\OfferStatus;
 use Illuminate\Http\Request;
+use App\Facades\OfferStatusSearchService;
 use App\Http\Requests\OfferStatuses\OfferStatusRequest;
 
 class OfferStatusController extends Controller
@@ -18,6 +19,13 @@ class OfferStatusController extends Controller
             ]
             );
     }
+    public function ajax(Request $request)
+    {
+        
+        return OfferStatusSearchService::search($request->search)->toArray();
+        
+    }
+
     public function create()
     {
         return view('offer_statuses.create');

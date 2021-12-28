@@ -21,7 +21,77 @@ $(function()
         language: config.locale,
         allowClear: true
     }
-    )
+    );
+
+    $('#offer-offer_status').select2({
+        theme: 'bootstrap-5',
+        language: config.locale,
+        allowClear: true,
+        ajax: {
+            url: config.host + '/offer_statuses/ajax',
+            type: 'POST',
+            headers: {
+                'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content')
+            },
+            dataType: 'json',
+            delay: 250,
+            data: function (params)
+            {
+                //console.log(params.term);
+                
+                return {
+                    search: params.term
+                };
+            },
+            processResults: function (response)
+            {
+                //console.log(response);
+                var data = $.map(response, function(offer_status)
+                {
+                    offer_status.text = offer_status.text || offer_status.name;
+                    return offer_status;
+                });
+                return {
+                    results: data
+                };
+            }
+        }
+    });
+
+    $('#offer-property').select2({
+        theme: 'bootstrap-5',
+        language: config.locale,
+        allowClear: true,
+        ajax: {
+            url: config.host + '/properties/ajax',
+            type: 'POST',
+            headers: {
+                'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content')
+            },
+            dataType: 'json',
+            delay: 250,
+            data: function (params)
+            {
+                //console.log(params.term);
+                
+                return {
+                    search: params.term
+                };
+            },
+            processResults: function (response)
+            {
+                //console.log(response);
+                var data = $.map(response, function(property)
+                {
+                    property.text = property.text || property.name;
+                    return property;
+                });
+                return {
+                    results: data
+                };
+            }
+        }
+    });
 });
 
 require('./vendor/jsvalidation/js/jsvalidation');

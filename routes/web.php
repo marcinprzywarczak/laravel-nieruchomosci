@@ -36,6 +36,10 @@ Route::middleware(['auth', 'verified'])->group(function(){
         Route::get('', [PropertyTypeController::class, 'index'])
             ->name('index');
 
+        Route::post('ajax', [PropertyTypeController::class, 'ajax'])
+            ->name('ajax')
+            ->middleware(['only_ajax_request']);
+
         Route::get('create', [PropertyTypeController::class, 'create'])
             ->name('create');
 

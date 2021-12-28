@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\PropertyType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Facades\PropertyTypeSearchService;
 use App\Http\Requests\PropertyTypes\PropertyTypeRequest;
 
 class PropertyTypeController extends Controller
@@ -23,6 +24,13 @@ class PropertyTypeController extends Controller
                     ->withCount('properties')->get()
             ]
             );
+    }
+
+    public function ajax(Request $request)
+    {
+        
+        return PropertyTypeSearchService::search($request->search)->toArray();
+        
     }
     public function create()
     {

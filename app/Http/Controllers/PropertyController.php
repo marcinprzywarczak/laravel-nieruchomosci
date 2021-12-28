@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Property;
 use App\Models\PropertyType;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Services\DataTables\PropertyDataTable;
 use App\Http\Requests\Properties\PropertyRequest;
@@ -54,11 +55,11 @@ class PropertyController extends Controller
             );
     }
 
-    public function create()
+    public function create(Request $request)
     {
         return view('properties.create', 
         [
-            'property_types' => PropertyType::orderBy('name')->get()
+            'property_type' => PropertyType::find($request->old('property_type_id'))
         ]);
     }
 
@@ -77,13 +78,13 @@ class PropertyController extends Controller
             ]));
     }
 
-    public function edit(Property $property)
+    public function edit(Property $property, Request $request)
     {
         $edit = true;
-        $property_types = PropertyType::orderBy('name')->get();
+        $property_type =  PropertyType::find($request->old('property_type_id'));
         return view(
             'properties.create',
-            compact('property', 'edit', 'property_types')
+            compact('property', 'edit', 'property_type')
             
         );
     }

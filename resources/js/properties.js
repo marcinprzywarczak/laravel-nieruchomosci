@@ -59,7 +59,42 @@ $(function ()
         language: config.locale,
         allowClear: true
     }
-    )
+    );
+
+    $('#property-property_type').select2({
+        theme: 'bootstrap-5',
+        language: config.locale,
+        allowClear: true,
+        ajax: {
+            url: config.host + '/property_types/ajax',
+            type: 'POST',
+            headers: {
+                'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content')
+            },
+            dataType: 'json',
+            delay: 250,
+            data: function (params)
+            {
+                //console.log(params.term);
+                
+                return {
+                    search: params.term
+                };
+            },
+            processResults: function (response)
+            {
+                //console.log(response);
+                var data = $.map(response, function(property_type)
+                {
+                    property_type.text = property_type.text || property_type.name;
+                    return property_type;
+                });
+                return {
+                    results: data
+                };
+            }
+        }
+    });
 });
 
 require('./vendor/jsvalidation/js/jsvalidation');

@@ -26,12 +26,12 @@ class Offer extends Model
 
     public function property()
     {
-        return $this->belongsTo(Property::class);
+        return $this->belongsTo(Property::class)->withTrashed();;
     }
 
     public function offer_status()
     {
-        return $this->belongsTo(OfferStatus::class);
+        return $this->belongsTo(OfferStatus::class)->withTrashed();
     }
 
     public function property_type()

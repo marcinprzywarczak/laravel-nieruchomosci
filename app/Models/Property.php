@@ -7,11 +7,12 @@ use App\Models\OfferStatus;
 use App\Models\PropertyType;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Dyrynda\Database\Support\CascadeSoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Property extends Model
 {
-    use HasFactory,  SoftDeletes;
+    use HasFactory,  SoftDeletes, CascadeSoftDeletes;
 
     protected $fillable =
     [
@@ -23,7 +24,10 @@ class Property extends Model
         'number_of_floor',
         'description'
     ];
-
+    protected $cascadeDeletes =
+    [
+        'offers'
+    ];
     public function offers()
     {
         return $this->hasMany(Offer::class)->withTrashed();
@@ -31,7 +35,7 @@ class Property extends Model
 
     public function property_type()
     {
-        return $this->belongsTo(PropertyType::class);
+        return $this->belongsTo(PropertyType::class)->withTrashed();
     }
     public function offer_status()
     {

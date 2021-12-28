@@ -84,11 +84,13 @@ Route::middleware(['auth', 'verified'])->group(function(){
 
         Route::delete('{offer_status}', [OfferStatusController::class, 'destroy'])
             ->where('offer_status', '[0-9]+')
-            ->name('destroy');
+            ->name('destroy')
+            ->middleware(['permission:offer_statuses.store']);
 
         Route::put('{id}/restore', [OfferStatusController::class, 'restore'])
             ->where('id', '[0-9]+')
-            ->name('restore');
+            ->name('restore')
+            ->middleware(['permission:offer_statuses.store']);
     });
 
     Route::name('properties.')->prefix('properties')->group(function()
@@ -99,9 +101,16 @@ Route::middleware(['auth', 'verified'])->group(function(){
         Route::post('/datatable', [PropertyController::class, 'dataTable'])
             ->name('datatable')
             ->middleware(['permission:properties.index']);
+
+
         Route::get('{property}/offers', [PropertyController::class, 'offers'])
             ->where('property', '[0-9]+')
             ->name('offers')
+            ->middleware(['permission:properties.index']);
+
+        Route::get('{id}/offers_trashed', [PropertyController::class, 'offers_trashed'])
+            ->where('id', '[0-9]+')
+            ->name('offers_trashed')
             ->middleware(['permission:properties.index']);
 
         Route::get('create', [PropertyController::class, 'create'])
@@ -147,21 +156,25 @@ Route::middleware(['auth', 'verified'])->group(function(){
 
         Route::delete('{property}', [PropertyController::class, 'destroy'])
             ->where('property', '[0-9]+')
-            ->name('destroy');
+            ->name('destroy')
+            ->middleware(['permission:properties.store']);
 
         Route::put('{id}/restore', [PropertyController::class, 'restore'])
             ->where('id', '[0-9]+')
-            ->name('restore');
+            ->name('restore')
+            ->middleware(['permission:properties.store']);
 
         Route::delete('{property}/{offer}', [OfferController::class, 'destroy_offer'])
             ->where('property', '[0-9]+')
             ->where('offer', '[0-9]+')
-            ->name('destroy_offer');
+            ->name('destroy_offer')
+            ->middleware(['permission:offers.store']);
 
         Route::put('{property}/{id}/restore', [OfferController::class, 'restore_offer'])
             ->where('property', '[0-9]+')
             ->where('id', '[0-9]+')
-            ->name('restore_offer');
+            ->name('restore_offer')
+            ->middleware(['permission:offers.store']);
     });
     Route::name('offers.')->prefix('offers')->group(function()
     {
@@ -191,10 +204,12 @@ Route::middleware(['auth', 'verified'])->group(function(){
 
         Route::delete('{offer}', [OfferController::class, 'destroy'])
             ->where('offer', '[0-9]+')
-            ->name('destroy');
+            ->name('destroy')
+            ->middleware(['permission:offers.store']);
 
         Route::put('{id}/restore', [OfferController::class, 'restore'])
             ->where('id', '[0-9]+')
-            ->name('restore');
+            ->name('restore')
+            ->middleware(['permission:offers.store']);
     });
 });

@@ -102,15 +102,28 @@ class PropertyDataTable extends DataTable
 
     private function getOffersButton(Property $property): string
     {
+        if(isset($property->deleted_at))
+        {
+            return view('components.datatables.action-link', [
+                'slot' => 'Oferty',
+                'attributes' => new ComponentAttributeBag([
+                    'url' => route('properties.offers_trashed', $property),
+                    'title' =>  __('translations.properties.label.offers'),
+                    'class' => 'btn btn-secondary'
+                ])
+            ])->render();
+        }
+        else {
+            return view('components.datatables.action-link', [
+                'slot' => 'Oferty',
+                'attributes' => new ComponentAttributeBag([
+                    'url' => route('properties.offers', $property),
+                    'title' =>  __('translations.properties.label.offers'),
+                    'class' => 'btn btn-secondary'
+                ])
+            ])->render();
+        }
         
-        return view('components.datatables.action-link', [
-            'slot' => 'Oferty',
-            'attributes' => new ComponentAttributeBag([
-                'url' => route('properties.offers', $property),
-                'title' =>  __('translations.properties.label.offers'),
-                'class' => 'btn btn-secondary'
-            ])
-        ])->render();
     }
 
     private function getDestroyButton(Property $property): string

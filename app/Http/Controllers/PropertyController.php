@@ -41,6 +41,19 @@ class PropertyController extends Controller
             );
     }
 
+    public function offers_trashed(int $id)
+    {
+        $property = Property::onlyTrashed()->findOrFail($id);
+        $offers = $property->offers;
+        return view(
+            'offers.index',
+            [
+                'offers' => $offers,
+                'property' => $property
+            ]
+            );
+    }
+
     public function create()
     {
         return view('properties.create', 

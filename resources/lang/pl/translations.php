@@ -124,7 +124,11 @@ return[
         'label' =>
         [
             'create' => 'Dodanie nowej oferty',
-            'edit' => 'Edycja danych oferty'
+            'edit' => 'Edycja danych oferty',
+            'destroy' => 'Usunięcie oferty',
+            'destroy-question' => 'Czy na pewno usunąc ofertę o tytule :title?',
+            'restore' => 'Anulowanie usunięcia oferty',
+            'restore-question' => 'Czy anulować usunięcie oferty o tytule :title?',
         ],
         'attribute' =>
         [
@@ -142,7 +146,9 @@ return[
             [
                 'stored' => 'Dodano ofertę o id :id dla nieruchomości o id :property_id',
                 'updated' => 'Zaktualizowano ofertę o tytule :title',
-                'nothing-changed' => 'Dane oferty o tytule :title nie zmieniły się'
+                'nothing-changed' => 'Dane oferty o tytule :title nie zmieniły się',
+                'destroy' => 'Oferta o tytule :title została usunięta',
+                'restore' => 'Usunięcie oferty o tytule :title zostało anulowane',
             ]
         ]
     ]

@@ -152,6 +152,16 @@ Route::middleware(['auth', 'verified'])->group(function(){
         Route::put('{id}/restore', [PropertyController::class, 'restore'])
             ->where('id', '[0-9]+')
             ->name('restore');
+
+        Route::delete('{property}/{offer}', [OfferController::class, 'destroy_offer'])
+            ->where('property', '[0-9]+')
+            ->where('offer', '[0-9]+')
+            ->name('destroy_offer');
+
+        Route::put('{property}/{id}/restore', [OfferController::class, 'restore_offer'])
+            ->where('property', '[0-9]+')
+            ->where('id', '[0-9]+')
+            ->name('restore_offer');
     });
     Route::name('offers.')->prefix('offers')->group(function()
     {
@@ -178,5 +188,13 @@ Route::middleware(['auth', 'verified'])->group(function(){
             ->where('offer', '[0-9]+')
             ->name('update')
             ->middleware(['permission:offers.store']);
+
+        Route::delete('{offer}', [OfferController::class, 'destroy'])
+            ->where('offer', '[0-9]+')
+            ->name('destroy');
+
+        Route::put('{id}/restore', [OfferController::class, 'restore'])
+            ->where('id', '[0-9]+')
+            ->name('restore');
     });
 });

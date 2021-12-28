@@ -129,5 +129,43 @@ class OfferController extends Controller
                     )
                     );
     }
+    public function destroy(Offer $offer)
+    {
+        $offer->delete();
+        return redirect()->route('offers.index')
+            ->with('success', __('translations.offers.flashes.success.destroy' , [
+                'title' => $offer->title
+            ]));
 
+    }
+
+    public function restore(int $id)
+    {
+        $offer = Offer::onlyTrashed()->findOrFail($id);
+        $offer->restore();
+        return redirect()->route('offers.index')
+        ->with('success', __('translations.offers.flashes.success.restore' , [
+            'title' => $offer->title
+        ]));
+    }
+
+    public function destroy_offer(Property $property, Offer $offer)
+    {
+        $offer->delete();
+        return redirect()->route('properties.offers', $property)
+            ->with('success', __('translations.offers.flashes.success.destroy' , [
+                'title' => $offer->title
+            ]));
+
+    }
+
+    public function restore_offer(Property $property, int $id)
+    {
+        $offer = Offer::onlyTrashed()->findOrFail($id);
+        $offer->restore();
+        return redirect()->route('properties.offers', $property)
+        ->with('success', __('translations.offers.flashes.success.restore' , [
+            'title' => $offer->title
+        ]));
+    }
 }

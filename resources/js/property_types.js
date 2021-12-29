@@ -1,6 +1,8 @@
 const { default: Swal } = require('sweetalert2');
 
 require('datatables.net-bs5');
+require('datatables.net-buttons-bs5');
+require('datatables.net-buttons/js/buttons.colVis.js');
 
 $(function()
 {
@@ -9,10 +11,18 @@ $(function()
             "language" : 
             {
                 "url" : "vendor/datatables/i18n/" + config.locale + ".json"
-            }
-        }
+            },
         
-    );
+            dom: 'Bfrtipl',
+            buttons: [
+                {
+                    extend: 'colvis',
+                    columns: ':not(.always-visible)',
+                    collectionLayout: 'three-column',
+                }
+            ]
+        
+    });
 });
 
 require('./vendor/jsvalidation/js/jsvalidation');

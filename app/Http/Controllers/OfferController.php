@@ -26,7 +26,7 @@ class OfferController extends Controller
         return view('offers.create', 
         [
             'offer_status' => OfferStatus::find($request->old('offer_status_id')),
-            'properties' => Property::orderBy('id')->get()
+            'properties' => Property::find($request->old('property_id'))
         ]);
     }
 
@@ -43,7 +43,9 @@ class OfferController extends Controller
 
     public function store_offer(OfferRequest $request, Property $property)
     {
-        $offers = Offer::where('property_id', $property->id);
+        
+        //dd($request->get('property_id'));
+        $offers = Offer::where('property_id', $request->get('property_id'));
         $offer = DB::transaction(function () use($request, $offers) {
             $offers->delete();
             $offer = Offer::create(
@@ -54,7 +56,7 @@ class OfferController extends Controller
            
         return redirect()->route('properties.offers', $property)
             ->with('success', __('translations.offers.flashes.success.stored', [
-                'id' => $offer->id,
+                'title' => $offer->title,
                 'property_id' => $offer->property_id
             ]));
     }
@@ -66,7 +68,7 @@ class OfferController extends Controller
         );      
         return redirect()->route('offers.index')
             ->with('success', __('translations.offers.flashes.success.stored', [
-                'id' => $offer->id,
+                'title' => $offer->title,
                 'property_id' => $offer->property_id
             ]));
     }
@@ -75,7 +77,7 @@ class OfferController extends Controller
     {
         $edit = true;
         $offer_status = OfferStatus::find($request->old('offer_status_id'));
-        $properties = Property::orderBy('id')->get();
+        $properties = Property::find($request->old('property_id'));
         return view(
             'offers.create',
             compact('offer', 'edit', 'properties', 'offer_status')
@@ -100,7 +102,7 @@ class OfferController extends Controller
         $offer->fill(
             $request->all()
         )->save();
-        return redirect()->route('properties.index')
+        return redirect()->route('offers.index')
             ->with(
                 'success',
                 __($offer->wasChanged()

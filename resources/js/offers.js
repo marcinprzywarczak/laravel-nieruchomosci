@@ -80,10 +80,11 @@ $(function()
             },
             processResults: function (response)
             {
-                //console.log(response);
+                console.log(response);
+                //console.log(property);
                 var data = $.map(response, function(property)
                 {
-                    property.text = property.text || property.name;
+                    property.text = property.text || 'id: ' + property.id + ', adres: ' + property.address + ', typ nieruchomości: ' + property.property_type.name;
                     return property;
                 });
                 return {
@@ -98,7 +99,7 @@ require('./vendor/jsvalidation/js/jsvalidation');
 
 $('form[name=delete-item]').on('submit', function(e)
 {
-    console.log("alalala");
+    //console.log("alalala");
     e.preventDefault();
     const data = $(e.currentTarget).data();
     const message = !_.isNil(data.message) ? data.message : 'NO_MESSAGE_PROVIDED';

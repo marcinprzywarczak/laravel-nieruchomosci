@@ -49,7 +49,7 @@
                             {{ __('translations.offers.attribute.property') }}
                         </label>
                         <div class="col-sm-10">
-                            <select class="form-select select2 @error('property_id') is-invalid @enderror" name="property_id"
+                            <select class="form-select @error('property_id') is-invalid @enderror" name="property_id"
                             id="offer-property"
                             data-placeholder="{{ __('translations.labels.select2-placeholder') }}"
                             aria-describedby="offer-property-error">
@@ -59,19 +59,18 @@
                                         {{ __('translations.properties.attribute.property_type') }}: {{ $property->property_type->name }}</option>
                                 @else
                                     
-                                @foreach ($properties as $propertyy )
-                                @if (($propertyy->id) == old('property_id'))
-                                    <option value="{{ $propertyy->id }}" selected>id: {{ $propertyy->id }}, {{ __('translations.properties.attribute.address') }}: {{ $propertyy->address }},
-                                        {{ __('translations.properties.attribute.property_type') }}: {{ $propertyy->property_type->name }}</option>
-                                @elseif (isset($offer) && (($offer->property_id) === $propertyy->id))
-                                    <option value="{{ $propertyy->id }}" selected>id: {{ $propertyy->id }}, {{ __('translations.properties.attribute.address') }}: {{ $propertyy->address }},
-                                        {{ __('translations.properties.attribute.property_type') }}: {{ $propertyy->property_type->name }}</option>
-                                @else
-                                    <option value="{{ $propertyy->id }}">id: {{ $propertyy->id }}, {{ __('translations.properties.attribute.address') }}: {{ $propertyy->address }},
-                                        {{ __('translations.properties.attribute.property_type') }}: {{ $propertyy->property_type->name }}</option>
-                                @endif
-                                    
-                                @endforeach
+                                    @if (isset($properties))
+                                        <option value="{{ $properties->id }}" selected>
+                                            id: {{ $properties->id }}, {{ __('translations.properties.attribute.address') }}: {{ $properties->address }},
+                                        {{ __('translations.properties.attribute.property_type') }}:
+                                        </option>
+                                    @elseif (isset($offer))
+                                        <option value="{{ $offer->property_id }}" selected>
+                                            id: {{ $offer->property->id }}, {{ __('translations.properties.attribute.address') }}: {{ $offer->property->address }},
+                                            {{ __('translations.properties.attribute.property_type') }}: {{ $offer->property->property_type->name }}
+                                        </option>
+                                        
+                                    @endif
                                 @endif
                                 
 

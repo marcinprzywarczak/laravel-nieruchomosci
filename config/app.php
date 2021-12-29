@@ -185,7 +185,10 @@ return [
 
         App\Providers\PropertyTypeSearchServiceProvider::class,
 
-        App\Providers\OfferStatusSearchServiceProvider::class
+        App\Providers\OfferStatusSearchServiceProvider::class,
+
+        App\Providers\PropertySearchServiceProvider::class,
+
     ],
 
     /*
@@ -241,6 +244,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'PropertyTypeSearchService' => App\Facades\PropertyTypeSearchService::class,
         'OfferStatusSearchService' => App\Facades\OfferStatusSearchService::class,
+        'PropertySearchService' => App\Facades\PropertySearchService::class,
 
     ],
     'admin_role' => env('ADMIN_ROLE', 'admin'),

@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Services\DataTables\PropertyDataTable;
 use App\Http\Requests\Properties\PropertyRequest;
+use App\Facades\PropertySearchService;
 
 class PropertyController extends Controller
 {
@@ -30,6 +31,14 @@ class PropertyController extends Controller
             ]
             );
     }
+
+    public function ajax(Request $request)
+    {
+        
+        return PropertySearchService::search($request->search)->toArray();
+        
+    }
+
     public function offers(Property $property)
     {
         $offers = $property->offers;

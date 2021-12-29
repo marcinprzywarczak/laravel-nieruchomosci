@@ -1,4 +1,9 @@
 require('datatables.net-bs5');
+
+
+require('datatables.net-buttons-bs5');
+require('datatables.net-buttons/js/buttons.colVis.js');
+
 const { registerConfirmAction } = require('./confirm_action');
 
 
@@ -51,7 +56,18 @@ $(function ()
             pageLength: 10,
             lengthMenu: [[10,50,100,200], [10, 50, 100, 200]],
             stateSave: true,
-            stateDuration: 604800
+            stateDuration: 604800,
+            dom: 'Bfrtipl',
+            buttons: [
+                {
+                    extend: 'colvis',
+                    columns: ':not(.always-visible)',
+                    exportOptions: {
+                        columns: ':visible(:not(:last-child)'
+                    },
+                    collectionLayout: 'three-column',
+                }
+            ]
         }
     );
     $('.select2').select2({

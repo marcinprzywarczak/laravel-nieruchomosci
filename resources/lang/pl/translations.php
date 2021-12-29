@@ -144,7 +144,7 @@ return[
         [
             'success' =>
             [
-                'stored' => 'Dodano ofertę o id :id dla nieruchomości o id :property_id',
+                'stored' => 'Dodano ofertę o tytule :title dla nieruchomości o id :property_id',
                 'updated' => 'Zaktualizowano ofertę o tytule :title',
                 'nothing-changed' => 'Dane oferty o tytule :title nie zmieniły się',
                 'destroy' => 'Oferta o tytule :title została usunięta',

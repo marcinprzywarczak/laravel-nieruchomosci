@@ -6,9 +6,11 @@ use App\Models\Property;
 use App\Models\PropertyType;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Facades\PropertySearchService;
 use App\Services\DataTables\PropertyDataTable;
 use App\Http\Requests\Properties\PropertyRequest;
-use App\Facades\PropertySearchService;
+use App\Services\Properties\ExportPropertiesToExcelService;
 
 class PropertyController extends Controller
 {
@@ -21,6 +23,15 @@ class PropertyController extends Controller
     {
         return $dataTable->render('properties.index');
     }
+
+    public function export()
+    {
+        return Excel::download(
+            new ExportPropertiesToExcelService,
+            'nieruchomosci.xlsx'
+        );
+    }
+
     public function index2()
     {
         return view(

@@ -116,6 +116,10 @@ Route::middleware(['auth', 'verified'])->group(function(){
             ->name('ajax')
             ->middleware(['permission:properties.store', 'only_ajax_request']);
 
+        Route::get('export', [PropertyController::class, 'export'])
+            ->name('export')
+            ->middleware(['permission:properties.index']);
+
         Route::get('{property}/offers', [PropertyController::class, 'offers'])
             ->where('property', '[0-9]+')
             ->name('offers')

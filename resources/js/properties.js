@@ -60,6 +60,12 @@ $(function ()
             dom: 'Bfrtipl',
             buttons: [
                 {
+                    text: 'Excel',
+                    action: function(e, dt, node, conf) {
+                        location.replace(config.host + "/properties/export");
+                    }
+                },
+                {
                     extend: 'colvis',
                     columns: ':not(.always-visible)',
                     exportOptions: {

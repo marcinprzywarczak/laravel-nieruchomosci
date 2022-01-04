@@ -1,4 +1,11 @@
 require('datatables.net-bs5');
+require('datatables.net-buttons-bs5');
+require('datatables.net-buttons/js/buttons.colVis.js');
+window.JSZip = require('jszip');
+require('datatables.net-buttons/js/buttons.html5.js')();
+require('datatables.net-buttons/js/buttons.print.js')();
+
+
 const { default: Swal } = require('sweetalert2');
 $(function()
 {
@@ -7,7 +14,25 @@ $(function()
             "language" : 
             {
                 "url" : "vendor/datatables/i18n/" + config.locale + ".json"
-            }
+            },
+            dom: 'Bfrtipl',
+            buttons: [
+                {
+                    extend: 'excelHtml5'
+                },
+                {
+                    extend: 'print',
+                    exportOption: {}
+                },
+                {
+                    extend: 'colvis',
+                    columns: ':not(.always-visible)',
+                    exportOptions: {
+                        columns: ':visible(:not(:last-child)'
+                    },
+                    collectionLayout: 'three-column',
+                }
+            ]
         }
         
     );

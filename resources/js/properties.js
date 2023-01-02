@@ -62,7 +62,14 @@ $(function ()
                 {
                     text: 'Excel',
                     action: function(e, dt, node, conf) {
-                        location.replace(config.host + "/properties/export");
+                        location.replace(config.host + "/properties/export/excel");
+                    }
+                },
+
+                {
+                    text: 'Pdf',
+                    action: function(e, dt, node, conf) {
+                        location.replace(config.host + "/properties/export/pdf");
                     }
                 },
                 {

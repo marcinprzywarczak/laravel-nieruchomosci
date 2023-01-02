@@ -39,11 +39,7 @@
                 </x-nav-link>
             </li>
             @endcan
-            <li class="nav-item">
-                <x-nav-link :href="route('properties2')" :active="request()->routeIs('properties2')">
-                    {{ __('translations.properties.title') }}
-                </x-nav-link>
-            </li>
+            
             <li class="nav-item">
                 <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                     Dashboard
@@ -54,11 +50,7 @@
                     Home
                 </x-nav-link>
             </li>
-            <li class="nav-item">
-                <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
-                    Link
-                </x-nav-link>
-            </li>
+            
             @can('log-viewer')
             <li class="nav-item">
                 <x-nav-link :href="route('log-viewer::dashboard')">
@@ -66,11 +58,7 @@
                 </x-nav-link>
             </li>  
             @endcan   
-            <li class="nav-item">
-                <x-nav-link class="disabled" aria-disabled="true">
-                    Disabled
-                </x-nav-link>
-            </li>
+            
         </ul>
         <div class="navbar-nav dropdown">
             <a href="#" class="nav-link dropdown-toggle" id="profile" 

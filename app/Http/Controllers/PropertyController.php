@@ -10,7 +10,7 @@ use Maatwebsite\Excel\Facades\Excel;
 use App\Facades\PropertySearchService;
 use App\Services\DataTables\PropertyDataTable;
 use App\Http\Requests\Properties\PropertyRequest;
-use App\Services\Properties\ExportPropertiesToExcelService;
+use App\Services\Properties\ExportPropertiesService;
 
 class PropertyController extends Controller
 {
@@ -24,12 +24,14 @@ class PropertyController extends Controller
         return $dataTable->render('properties.index');
     }
 
-    public function export()
+    public function exportExcel()
     {
-        return Excel::download(
-            new ExportPropertiesToExcelService,
-            'nieruchomosci.xlsx'
-        );
+        return ExportPropertiesService::downloadExcel('nieruchomosci');
+    }
+
+    public function exportPdf()
+    {
+        return ExportPropertiesService::downloadPdf('nieruchomosci');
     }
 
     public function index2()
@@ -66,11 +68,13 @@ class PropertyController extends Controller
     {
         $property = Property::onlyTrashed()->findOrFail($id);
         $offers = $property->offers;
+        $trashed = true;
         return view(
             'offers.index',
             [
                 'offers' => $offers,
-                'property' => $property
+                'property' => $property,
+                'trashed' => $trashed
             ]
             );
     }

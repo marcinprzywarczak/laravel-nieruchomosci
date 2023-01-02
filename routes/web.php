@@ -21,11 +21,11 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth'])->name('dashboard');
 
-
+Route::get('/dashboard', [PropertyController::class, 'index2'])->name('dashboard')->middleware(['auth']);
 Route::get('/properties2', [PropertyController::class, 'index2'])->name('properties2');
 
 
@@ -116,8 +116,12 @@ Route::middleware(['auth', 'verified'])->group(function(){
             ->name('ajax')
             ->middleware(['permission:properties.store', 'only_ajax_request']);
 
-        Route::get('export', [PropertyController::class, 'export'])
-            ->name('export')
+        Route::get('export/excel', [PropertyController::class, 'exportExcel'])
+            ->name('export/excel')
+            ->middleware(['permission:properties.index']);
+
+            Route::get('export/pdf', [PropertyController::class, 'exportPdf'])
+            ->name('export/pdf')
             ->middleware(['permission:properties.index']);
 
         Route::get('{property}/offers', [PropertyController::class, 'offers'])
